@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dahshan Soft | دهشان سوفت — تطبيقات عربية سهلة</title>
+<meta name="description" content="Dahshan Soft — نطوّر تطبيقات عربية سهلة وعملية: أملاكي لإدارة العقارات والإيجارات، وتطبيقات تعليمية ودينية.">
+<meta name="theme-color" content="#0f5c4d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5c4d'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='28' fill='%23d4a73c'%3EDS%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Dahshan Soft — تطبيقات عربية سهلة">
+<meta property="og:description" content="أملاكي: إدارة العقارات والإيجارات بضغطة. جرّبه مجاناً أسبوعاً.">
+<meta property="og:image" content="https://dahshansoft.com/amlaki-screen.png">
+<style>
+:root{--g:#0f5c4d;--g2:#e3f1ec;--gd:#073a30;--gold:#d4a73c;--txt:#16211d;--mut:#5a6863;--bg:#f6f8f7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--txt);background:var(--bg);line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+/* الشريط العلوي */
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e3e9e6}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;direction:ltr}
+.logo .mark{width:42px;height:42px;border-radius:12px;background:var(--g);color:var(--gold);display:grid;place-items:center;font-weight:900;font-size:1.05rem;letter-spacing:.5px}
+.logo span b{color:var(--g)}
+.links{display:flex;gap:22px;font-weight:700;color:var(--mut)}
+.links a:hover{color:var(--g)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:14px;font-weight:800;font-size:1rem;border:none;cursor:pointer;font-family:inherit}
+.b-g{background:var(--g);color:#fff}
+.b-gold{background:var(--gold);color:var(--gd)}
+.b-w{background:#1fa855;color:#fff}
+.b-o{background:#fff;color:var(--g);border:2px solid var(--g)}
+/* الواجهة */
+.hero{background:radial-gradient(circle at 80% 10%,#17705e 0%,var(--g) 40%,var(--gd) 100%);color:#fff;padding:80px 0 90px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2rem,4.5vw,3.3rem);line-height:1.3}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.2rem;opacity:.9;margin:18px 0 28px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.brandbox{justify-self:center;text-align:center}
+.bigmark{width:220px;height:220px;border-radius:52px;background:rgba(255,255,255,.08);border:2px solid rgba(212,167,60,.5);display:grid;place-items:center;margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.bigmark b{font-size:5.5rem;color:var(--gold);direction:ltr;letter-spacing:2px}
+.brandbox p{margin-top:14px;font-weight:800;font-size:1.4rem;direction:ltr;letter-spacing:1px}
+/* الأقسام */
+section{padding:80px 0}
+.sec-t{text-align:center;margin-bottom:44px}
+.sec-t h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.sec-t p{color:var(--mut);font-size:1.1rem}
+/* التطبيق المميز */
+.feat{background:#fff;border-radius:28px;box-shadow:0 10px 40px rgba(15,92,77,.1);display:grid;grid-template-columns:1fr 1.3fr;gap:40px;padding:44px;align-items:center}
+.phone{width:270px;height:560px;margin:auto;border-radius:40px;background:#111;padding:11px;box-shadow:0 25px 60px rgba(0,0,0,.35)}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px;display:block}
+.apphead{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+.apphead img{width:72px;height:72px;border-radius:18px}
+.apphead h3{font-size:2rem}
+.apphead small{display:block;color:var(--mut);font-size:1rem;font-weight:600}
+.tag{display:inline-block;background:var(--g2);color:var(--g);font-weight:800;font-size:.85rem;padding:4px 14px;border-radius:30px;margin:4px 0 14px}
+.list{list-style:none;display:grid;gap:10px;margin:18px 0 26px}
+.list li{display:flex;gap:10px;align-items:flex-start;font-size:1.05rem}
+.list li:before{content:"✓";flex:0 0 28px;height:28px;border-radius:50%;background:var(--gold);color:var(--gd);display:grid;place-items:center;font-weight:900}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.note{color:var(--mut);font-size:.92rem;margin-top:12px}
+/* تطبيقات أخرى */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);border:1px solid #e6ece9}
+.card .ic{font-size:2.4rem}
+.card h4{font-size:1.2rem;margin:8px 0 4px}
+.card p{color:var(--mut)}
+.soon{display:inline-block;margin-top:12px;background:#fff4e0;color:#b06a00;font-weight:800;font-size:.85rem;padding:3px 12px;border-radius:30px}
+/* لماذا نحن */
+.why{background:var(--g2)}
+.why .card{text-align:center}
+/* التواصل */
+.contact{background:var(--gd);color:#fff;text-align:center}
+.contact p{opacity:.85;font-size:1.1rem;margin:10px 0 26px}
+footer{background:#052b23;color:#9fb8b0;text-align:center;padding:24px;font-size:.92rem}
+footer b{color:#fff;direction:ltr;display:inline-block}
+@media(max-width:800px){
+  .hero .wrap,.feat{grid-template-columns:1fr}
+  .brandbox{order:-1}.bigmark{width:150px;height:150px;border-radius:36px}.bigmark b{font-size:3.6rem}
+  .links{display:none}
+  .feat{padding:26px}
+  .phone{width:230px;height:480px}
+  section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="#"><div class="mark">DS</div><span><b>Dahshan</b> Soft</span></a>
+  <nav class="links"><a href="#apps">تطبيقاتنا</a><a href="#why">لماذا نحن</a><a href="#contact">تواصل معنا</a></nav>
+  <a class="btn b-w" href="https://wa.me/962779221235?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%A3%D9%83%D8%AB%D8%B1." target="_blank">💬 واتساب</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>تطبيقات عربية <span>سهلة</span><br>تخدم عملك وحياتك</h1>
+    <p>في <b dir="ltr">Dahshan Soft</b> نصمّم تطبيقات بسيطة وواضحة، بأزرار كبيرة ولغة عربية، تعمل على الأندرويد والآيفون — حتى بدون إنترنت.</p>
+    <div class="cta">
+      <a class="btn b-gold" href="#apps">🏢 تعرّف على أملاكي</a>
+      <a class="btn b-o" href="#contact" style="background:transparent;color:#fff;border-color:#fff">تواصل معنا</a>
+    </div>
+  </div>
+  <div class="brandbox"><div class="bigmark"><b>DS</b></div><p>DAHSHAN SOFT</p></div>
+</div></section>
+
+<section id="apps"><div class="wrap">
+  <div class="sec-t"><h2>تطبيقاتنا</h2><p>حلول عملية صُمّمت لتكون سهلة على الجميع</p></div>
+
+  <div class="feat">
+    <div class="phone"><img src="amlaki-screen.png" alt="شاشة تطبيق أملاكي"></div>
+    <div>
+      <div class="apphead"><img src="amlak-icon.png" alt="أيقونة أملاكي"><div><h3>أملاكي</h3><small>إدارة العقارات والإيجارات</small></div></div>
+      <span class="tag">🎁 جرّبه مجاناً أسبوعاً كاملاً</span>
+      <p>لكل مالك عقار أو مكتب عقاري: كل شققك ومحلاتك ومستأجريك ودفعاتك في مكان واحد.</p>
+      <ul class="list">
+        <li>تنبيه فوري بالدفعات المتأخرة والمستحقة</li>
+        <li>تذكير المستأجر على الواتساب برسالة جاهزة</li>
+        <li>العقود والشيكات ومواعيد الدفع وصور العقود</li>
+        <li>كشف حساب مطبوع لكل مستأجر وتقارير شاملة</li>
+        <li>المسقفات والمعارف والإجراءات القانونية</li>
+        <li>كلمة سر وبصمة ونسخ احتياطي تلقائي</li>
+      </ul>
+      <div class="btns">
+        <a class="btn b-g" href="https://github.com/Dahshan65/Amlaki/releases/latest" target="_blank">🤖 تحميل للأندرويد</a>
+        <a class="btn b-o" href="https://amlaki.dahshansoft.com" target="_blank">🍎 للآيفون</a>
+      </div>
+      <p class="note">للآيفون: افتح الرابط في Safari ← زر المشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية».</p>
+    </div>
+  </div>
+
+  <div class="sec-t" style="margin:60px 0 30px"><h2 style="font-size:1.6rem">تطبيقات أخرى</h2></div>
+  <div class="grid">
+    <div class="card"><div class="ic">📜</div><h4>مسابقة السيرة النبوية</h4><p>أسئلة ومراحل للتعلّم والمراجعة بطريقة ممتعة.</p><span class="soon">قريباً على المتجر</span></div>
+    <div class="card"><div class="ic">⚖️</div><h4>حاسبة الميراث الإسلامي</h4><p>حساب الأنصبة الشرعية بخطوات واضحة وسهلة.</p><span class="soon">قريباً</span></div>
+    <div class="card"><div class="ic">✍️</div><h4>تطبيقات الخط والقواعد</h4><p>أدوات ومسابقات لتعلّم اللغة العربية والخط العربي.</p><span class="soon">قريباً</span></div>
+  </div>
+</div></section>
+
+<section id="why" class="why"><div class="wrap">
+  <div class="sec-t"><h2>لماذا Dahshan Soft؟</h2></div>
+  <div class="grid">
+    <div class="card"><div class="ic">👆</div><h4>سهلة للجميع</h4><p>أزرار كبيرة وخط واضح، مناسبة لكل الأعمار.</p></div>
+    <div class="card"><div class="ic">🔒</div><h4>بياناتك عندك</h4><p>تُحفظ على هاتفك، محمية بكلمة سر وبصمة.</p></div>
+    <div class="card"><div class="ic">📶</div><h4>بدون إنترنت</h4><p>تعمل في أي مكان، دون الحاجة لاتصال دائم.</p></div>
+    <div class="card"><div class="ic">💬</div><h4>دعم مباشر</h4><p>نرد عليك على الواتساب ونساعدك خطوة بخطوة.</p></div>
+  </div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <h2>تحتاج تطبيقاً أو عندك سؤال؟</h2>
+  <p>راسلنا على الواتساب ونرد عليك بأسرع وقت</p>
+  <a class="btn b-w" style="font-size:1.15rem;min-height:60px" href="https://wa.me/962779221235?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%A3%D9%83%D8%AB%D8%B1." target="_blank">💬 واتساب <span dir="ltr">00962779221235</span></a>
+</div></section>
+
+<footer>© <span id="y"></span> <b>Dahshan Soft</b> — عمّان، الأردن</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
