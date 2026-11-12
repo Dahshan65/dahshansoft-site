@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#3b30c9">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="أبني لغتي">
+<meta name="description" content="أبني لغتي – قواعد اللغة العربية للصف الحادي عشر، المنهاج الأردني. شرح وأسئلة وامتحانات تجريبية. تطوير Dahshan Soft.">
+<title>أبني لغتي – الصف الحادي عشر – الفصل الأول</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5fb; --card:#ffffff; --card2:#f7f8fd; --ink:#18203a; --muted:#6b7491; --line:#e6e9f4;
+  --p1:#3b30c9; --p2:#6d3df0; --pl:#ecebff; --acc:#ffb020; --accd:#d98a00;
+  --ok:#12b886; --okbg:#e6f8f1; --bad:#f0435a; --badbg:#fdecef;
+  --tq:#0ea5a4; --tqbg:#e2f6f6; --tb:#8b5cf6; --tbbg:#f0eafe; --ta:#f0567a; --tabg:#fde9ef;
+  --sh:0 6px 20px rgba(40,40,110,.08); --sh2:0 10px 30px rgba(59,48,201,.25);
+  --r:18px;
+}
+body.dark{
+  --bg:#0d1222; --card:#161d33; --card2:#1c2440; --ink:#e9edf8; --muted:#9aa4c4; --line:#263055;
+  --pl:#262a5a; --okbg:#0f3a30; --badbg:#44182a; --tqbg:#0f3436; --tbbg:#2c2250; --tabg:#43192a;
+  --sh:0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;transition:background .3s,color .3s}
+button,input{font-family:inherit;color:inherit}
+.app{max-width:520px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:84px}
+.app.nonav{padding-bottom:20px}
+
+/* ---------- الشريط العلوي ---------- */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--bg)}
+.topbar h1{flex:1;font-size:1.1rem;font-weight:800}
+.iconbtn{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:1.15rem;cursor:pointer;box-shadow:var(--sh)}
+.iconbtn:active{transform:scale(.92)}
+
+/* ---------- الشاشات ---------- */
+.screen{display:none;padding:4px 16px 16px;animation:in .3s ease}
+.screen.active{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- البطاقة الرئيسية ---------- */
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:22px 20px;color:#fff;
+  background:linear-gradient(135deg,var(--p1),var(--p2));box-shadow:var(--sh2);margin-bottom:16px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero:before{width:220px;height:220px;top:-90px;left:-70px}
+.hero:after{width:140px;height:140px;bottom:-60px;left:90px}
+.hero .hi{font-size:.9rem;opacity:.85}
+.hero .nm{font-size:1.5rem;font-weight:900;margin:2px 0 12px}
+.hero .row{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.ring{--v:0;width:92px;height:92px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:conic-gradient(var(--acc) calc(var(--v)*1%),rgba(255,255,255,.18) 0)}
+.ring i{width:74px;height:74px;border-radius:50%;background:rgba(40,30,150,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;font-style:normal}
+.ring b{font-size:1.35rem;font-weight:900;line-height:1}
+.ring small{font-size:.65rem;opacity:.85}
+.lvl{flex:1}
+.lvl .t{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:6px}
+.lvl .t b{font-weight:800}
+.xpbar{height:9px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd166,var(--acc));border-radius:9px;transition:width .6s}
+.chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);padding:4px 11px;border-radius:30px;font-size:.78rem;font-weight:700}
+
+/* ---------- بطاقات عامة ---------- */
+.sect{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 10px}
+.sect h2{font-size:1.02rem;font-weight:800}
+.sect a{font-size:.82rem;color:var(--p1);font-weight:700;cursor:pointer}
+body.dark .sect a{color:#a99cff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{padding:16px 14px;cursor:pointer;position:relative;text-align:right;border:1px solid var(--line);background:var(--card);border-radius:var(--r);box-shadow:var(--sh)}
+.tile:active{transform:scale(.97)}
+.tile .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:10px}
+.tile b{display:block;font-size:.98rem;font-weight:800}
+.tile span{font-size:.76rem;color:var(--muted)}
+.tile .badge{position:absolute;top:12px;left:12px;background:var(--bad);color:#fff;font-size:.72rem;font-weight:800;min-width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:0 7px}
+.i1{background:linear-gradient(135deg,#ffe2a8,#ffc24d)} .i2{background:linear-gradient(135deg,#d6d2ff,#a99cff)}
+.i3{background:linear-gradient(135deg,#ffd0d8,#ff8fa3)} .i4{background:linear-gradient(135deg,#c9f3ea,#6fdcc4)}
+
+.daily{display:flex;align-items:center;gap:14px;padding:16px;cursor:pointer;background:linear-gradient(135deg,#fff4dd,#ffe7b8);border:1px solid #ffd98a;border-radius:var(--r)}
+body.dark .daily{background:linear-gradient(135deg,#3a2c10,#4a3510);border-color:#6b4c12}
+.daily .ic{font-size:2rem}
+.daily b{display:block;font-size:1rem;font-weight:800;color:#7a4b00}
+body.dark .daily b{color:#ffd27a}
+.daily span{font-size:.8rem;color:#9a6a1a}
+body.dark .daily span{color:#d9b06a}
+.daily .go{margin-right:auto;background:var(--acc);color:#fff;font-weight:800;padding:8px 16px;border-radius:12px;font-size:.85rem}
+.daily.done{opacity:.75}
+
+.cont{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer}
+.cont .ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cont .tx{flex:1;min-width:0}
+.cont .tx small{color:var(--muted);font-size:.75rem}
+.cont .tx b{display:block;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arrow{color:var(--muted);font-size:1.2rem}
+
+/* ---------- الدروس ---------- */
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 14px;box-shadow:var(--sh);margin-bottom:12px}
+.search input{flex:1;border:none;background:none;padding:13px 0;font-size:.95rem;outline:none}
+.seg{display:flex;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:14px}
+.seg button{flex:1;border:none;background:none;padding:9px 6px;border-radius:10px;font-size:.88rem;font-weight:700;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--p1);box-shadow:var(--sh)}
+body.dark .seg button.on{color:#b9afff}
+.unit{padding:14px;margin-bottom:12px}
+.unit .uh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.unit .un{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.unit .ut{flex:1}
+.unit .ut small{font-size:.72rem;color:var(--muted)}
+.unit .ut b{display:block;font-size:.95rem;font-weight:800}
+.mini{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:5px}
+.mini i{display:block;height:100%;background:linear-gradient(90deg,var(--p2),var(--p1));border-radius:6px}
+.les{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:13px;background:var(--card2);margin-top:8px;cursor:pointer;border:1px solid transparent}
+.les:active{transform:scale(.98)}
+.les b{flex:1;font-size:.92rem;font-weight:700}
+.tag{font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:20px}
+.tq{background:var(--tqbg);color:var(--tq)} .tb{background:var(--tbbg);color:var(--tb)} .ta{background:var(--tabg);color:var(--ta)}
+.score{font-size:.74rem;font-weight:800;min-width:44px;text-align:center;padding:3px 6px;border-radius:9px;background:var(--line);color:var(--muted)}
+.score.g{background:var(--okbg);color:var(--ok)} .score.m{background:#fff3d6;color:var(--accd)} .score.l{background:var(--badbg);color:var(--bad)}
+body.dark .score.m{background:#3d2f10}
+
+/* ---------- واجهة القراءة المحسّنة ---------- */
+.reader-note{background:var(--pl);color:var(--ink);padding:14px 16px;border-radius:16px;margin-bottom:12px;font-size:.87rem;line-height:1.8;border:1px solid var(--line)}
+.reader-note span{display:block;color:var(--muted);font-size:.77rem}
+.sum{font-size:1.03rem;line-height:2.15;padding:20px}
+.sum h3{margin-top:23px;font-size:1.04rem}
+.sum p{margin:8px 0 13px}
+.sum li{margin:8px 0}
+.reading-passage{font-family:'Amiri',serif;font-size:1.3rem;line-height:2.25;text-align:justify}
+.writing-area{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card2);color:var(--ink);font:inherit;line-height:2;resize:vertical}
+.nav button{font-size:.65rem}
+/* ---------- الدرس ---------- */
+.lhead{padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
+.lhead .tag{display:inline-block;margin-bottom:8px}
+.lhead h2{font-size:1.25rem;font-weight:900;line-height:1.6}
+.lhead p{color:var(--muted);font-size:.82rem}
+.lhead.hb h2,.lhead.hb p{padding-left:72px}
+.lhead .best{position:absolute;left:16px;top:16px;text-align:center}
+.lhead .best b{display:block;font-size:1.2rem;color:var(--p1)}
+body.dark .lhead .best b{color:#b9afff}
+.lhead .best small{font-size:.65rem;color:var(--muted)}
+.sum{padding:18px;line-height:2.05;font-size:.97rem}
+.sum h3{font-size:1rem;font-weight:800;color:var(--p1);margin:16px 0 4px;display:flex;align-items:center;gap:8px}
+body.dark .sum h3{color:#b9afff}
+.sum h3:before{content:"";width:6px;height:18px;border-radius:4px;background:var(--acc)}
+.sum h3:first-child{margin-top:0}
+.sum ul{padding-right:20px}
+.sum li{margin:2px 0}
+.ex{font-family:'Amiri',serif;font-size:1.28rem;background:var(--card2);border-right:4px solid var(--acc);padding:8px 14px;border-radius:12px;margin:8px 0;line-height:1.9}
+.ex em{color:var(--bad);font-style:normal;font-weight:700}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:16px;padding:15px;font-size:1rem;font-weight:800;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,var(--p1),var(--p2));box-shadow:var(--sh2);margin-top:14px}
+.cta:active{transform:scale(.98)}
+.cta.alt{background:var(--card);color:var(--p1);border:2px solid var(--p1);box-shadow:none}
+body.dark .cta.alt{color:#b9afff;border-color:#6d5ff0}
+.cta.gold{background:linear-gradient(135deg,#ffc24d,#ff9500);box-shadow:0 10px 25px rgba(255,150,0,.3)}
+.sticky{position:sticky;bottom:12px}
+
+/* ---------- الأسئلة ---------- */
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.qhead .cnt{font-weight:800;font-size:.9rem}
+.qhead .cnt small{color:var(--muted);font-weight:600}
+.timer{margin-right:auto;background:var(--pl);color:var(--p1);font-weight:900;padding:5px 12px;border-radius:12px;font-size:.9rem}
+body.dark .timer{color:#c5bdff}
+.timer.low{background:var(--badbg);color:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.qbar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:14px}
+.qbar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#ff8a00);border-radius:8px;transition:width .4s}
+.qcard{padding:20px 18px}
+.qfrom{font-size:.74rem;color:var(--muted);margin-bottom:6px}
+.qtext{font-size:1.15rem;font-weight:800;line-height:1.9;margin-bottom:16px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;background:var(--card2);border:2px solid var(--line);border-radius:15px;padding:12px 12px;margin-bottom:10px;font-size:1rem;cursor:pointer;transition:all .2s}
+.opt:active{transform:scale(.98)}
+.opt .l{width:32px;height:32px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;flex-shrink:0;color:var(--p1)}
+.opt.sel{border-color:var(--p1);background:var(--pl)}
+.opt.ok{border-color:var(--ok);background:var(--okbg);color:var(--ok);font-weight:800}
+.opt.ok .l{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--badbg);color:var(--bad);animation:shake .4s}
+.opt.bad .l{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt.gone{opacity:.25;pointer-events:none;text-decoration:line-through}
+.opt:disabled{cursor:default}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.tools{display:flex;gap:8px;margin-top:4px}
+.tool{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--line);background:none;border-radius:12px;padding:9px;font-size:.82rem;font-weight:700;color:var(--muted);cursor:pointer}
+.tool.on{color:var(--accd);border-color:var(--acc);border-style:solid;background:#fff6e0}
+body.dark .tool.on{background:#3a2c10}
+.tool:disabled{opacity:.4}
+.why{display:none;margin-top:12px;padding:14px;border-radius:14px;font-size:.95rem;line-height:1.9}
+.why.ok{display:block;background:var(--okbg)} .why.bad{display:block;background:var(--badbg)}
+.why b{display:block;margin-bottom:2px}
+.why.ok b{color:var(--ok)} .why.bad b{color:var(--bad)}
+
+/* ---------- النتيجة ---------- */
+.res{padding:24px 18px;text-align:center}
+.bigring{--v:0;--c:var(--ok);width:150px;height:150px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  background:conic-gradient(var(--c) calc(var(--v)*1%),var(--line) 0)}
+.bigring i{width:122px;height:122px;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-style:normal}
+.bigring b{font-size:2.2rem;font-weight:900;color:var(--c)}
+.bigring small{color:var(--muted);font-size:.8rem}
+.res h2{font-size:1.3rem;font-weight:900}
+.res p{color:var(--muted);margin:4px 0 10px}
+.gain{display:flex;justify-content:center;gap:10px;margin:12px 0}
+.gain span{background:var(--card2);border:1px solid var(--line);padding:6px 14px;border-radius:12px;font-weight:800;font-size:.85rem}
+.review{margin-top:14px;text-align:right}
+.rv{padding:14px;margin-bottom:10px;border-right:4px solid var(--bad)}
+.rv .q{font-weight:800;margin-bottom:6px;line-height:1.8}
+.rv .a{color:var(--ok);font-weight:800;font-size:.92rem}
+.rv .w{color:var(--muted);font-size:.86rem;line-height:1.8;margin-top:4px}
+
+/* ---------- الإحصائيات ---------- */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.st{padding:16px;text-align:center}
+.st b{display:block;font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--p1),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent}
+body.dark .st b{background:linear-gradient(135deg,#a99cff,#e0b3ff);-webkit-background-clip:text;background-clip:text}
+.st span{font-size:.8rem;color:var(--muted)}
+.bars{padding:14px}
+.br{margin-bottom:12px}
+.br .t{display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:5px}
+.br .t b{font-weight:700}
+.br .mini{height:9px}
+.ach{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ac{padding:12px 6px;text-align:center;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.ac .e{font-size:1.7rem;filter:grayscale(1);opacity:.35}
+.ac small{display:block;font-size:.66rem;color:var(--muted);margin-top:4px;line-height:1.4}
+.ac.on{background:linear-gradient(135deg,#fff6df,#ffe9b5);border-color:#ffd98a}
+body.dark .ac.on{background:linear-gradient(135deg,#3a2c10,#4a3510);border-color:#6b4c12}
+.ac.on .e{filter:none;opacity:1}
+.ac.on small{color:#8a5a00;font-weight:700}
+body.dark .ac.on small{color:#ffd27a}
+
+/* ---------- الإعدادات ---------- */
+.set{padding:4px 16px}
+.sr{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.sr:last-child{border:none}
+.sr .ic{width:38px;height:38px;border-radius:12px;background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.sr .tx{flex:1}
+.sr .tx b{display:block;font-size:.95rem}
+.sr .tx small{font-size:.75rem;color:var(--muted)}
+.sw{width:50px;height:28px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;transition:.25s;flex-shrink:0;border:none}
+.sw:after{content:"";position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+.sw.on{background:linear-gradient(135deg,var(--p1),var(--p2))}
+.sw.on:after{right:25px}
+.fs{display:flex;gap:6px}
+.fs button{width:38px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--card2);font-weight:800;cursor:pointer}
+.fs button.on{background:var(--p1);color:#fff;border-color:var(--p1)}
+.danger{color:var(--bad)!important}
+.about{text-align:center;padding:22px 16px;margin-top:14px}
+.about .lg{font-family:'Amiri',serif;font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--p1),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.about p{color:var(--muted);font-size:.85rem;margin:4px 0}
+.wa{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#25d366;color:#fff;text-decoration:none;padding:10px 22px;border-radius:30px;font-weight:800;font-size:.92rem;box-shadow:0 8px 20px rgba(37,211,102,.3)}
+
+/* ---------- إعداد الامتحان ---------- */
+.opts2{display:flex;gap:8px;flex-wrap:wrap}
+.pick{flex:1;min-width:30%;border:2px solid var(--line);background:var(--card);border-radius:14px;padding:12px 6px;font-weight:800;font-size:.9rem;cursor:pointer;text-align:center}
+.pick small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
+.pick.on{border-color:var(--p1);background:var(--pl);color:var(--p1)}
+body.dark .pick.on{color:#c5bdff}
+.lbl{font-weight:800;margin:16px 2px 8px;font-size:.95rem}
+
+/* ---------- الترحيب ---------- */
+.welcome{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:30px 24px;text-align:center;
+  background:linear-gradient(160deg,var(--p1),var(--p2));color:#fff}
+.welcome .lg{font-family:'Amiri',serif;font-size:3.3rem;font-weight:700;line-height:1.2}
+.welcome .sub{opacity:.85;margin:6px 0 30px}
+.welcome .feat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;text-align:right}
+.welcome .feat div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:12px;font-size:.82rem;font-weight:700}
+.welcome input{width:100%;border:none;border-radius:16px;padding:16px;font-size:1.05rem;text-align:center;color:#18203a;margin-bottom:12px;outline:none}
+.welcome button{width:100%;border:none;border-radius:16px;padding:16px;font-size:1.05rem;font-weight:900;background:var(--acc);color:#3a2400;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+
+/* ---------- الشريط السفلي ---------- */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;z-index:30;
+  background:var(--card);border-top:1px solid var(--line);display:flex;padding:8px 6px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(30,30,90,.06)}
+.nav button{flex:1;border:none;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.7rem;font-weight:700;color:var(--muted);cursor:pointer;padding:4px 0;border-radius:12px}
+.nav button .e{font-size:1.25rem;width:44px;height:30px;border-radius:12px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.nav button.on{color:var(--p1)}
+body.dark .nav button.on{color:#b9afff}
+.nav button.on .e{background:var(--pl)}
+.app.nonav .nav{display:none}
+
+/* ---------- تنبيه وإنجاز ---------- */
+.toast{position:fixed;top:16px;left:50%;transform:translate(-50%,calc(-100% - 40px));z-index:60;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:16px;font-weight:800;font-size:.9rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .4s cubic-bezier(.2,1.4,.4,1);display:flex;align-items:center;gap:10px;max-width:92%}
+.toast{opacity:0}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.empty{text-align:center;padding:40px 16px;color:var(--muted);line-height:2}
+.empty .e{font-size:3.2rem}
+.modal{position:fixed;inset:0;background:rgba(10,12,30,.55);z-index:70;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal .box{background:var(--card);border-radius:22px;padding:22px;width:100%;max-width:380px;text-align:center}
+.modal h3{font-size:1.1rem;margin-bottom:6px}
+.modal p{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.modal .btns{display:flex;gap:10px}
+.modal .btns button{flex:1;border:none;border-radius:14px;padding:12px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- شاشة الترحيب (أول مرة) -->
+<div class="welcome" id="welcome" style="display:none">
+  <div class="lg">أبني لغتي</div>
+  <div class="sub">قواعد اللغة العربية – الصف الحادي عشر<br>المنهاج الأردني</div>
+  <div class="feat">
+    <div>📖 5 وحدات: قواعد ومهارات</div>
+    <div>✅ 200 سؤالًا مع شرح الإجابات</div>
+    <div>⏱️ امتحانات تجريبية بوقت</div>
+    <div>📈 مركز إتقان ومراجعة ذكية للأسئلة</div>
+  </div>
+  <input id="nameIn" placeholder="اكتب اسمك" maxlength="20">
+  <button onclick="saveName()">ابدأ رحلتك 🚀</button>
+</div>
+
+<div class="app" id="app" style="display:none">
+  <div class="topbar">
+    <button class="iconbtn" id="backBtn" onclick="goBack()" style="display:none">→</button>
+    <h1 id="title">أبني لغتي</h1>
+    <button class="iconbtn" onclick="toggleDark()" id="darkBtn">🌙</button>
+  </div>
+
+  <section class="screen" id="home"></section>
+  <section class="screen" id="lessons"></section>
+   <section class="screen" id="skills"></section>
+   <section class="screen" id="skillDetail"></section>
+  <section class="screen" id="lesson"></section>
+  <section class="screen" id="mastery"></section>
+  <section class="screen" id="examSetup"></section>
+  <section class="screen" id="quiz"></section>
+  <section class="screen" id="result"></section>
+  <section class="screen" id="stats"></section>
+  <section class="screen" id="settings"></section>
+
+  <nav class="nav">
+    <button data-t="home" onclick="tab('home')"><span class="e">🏠</span>الرئيسية</button>
+    <button data-t="lessons" onclick="tab('lessons')"><span class="e">📚</span>القواعد</button>
+     <button data-t="skills" onclick="tab('skills')"><span class="e">📖</span>المهارات</button>
+    <button data-t="mastery" onclick="tab('mastery')"><span class="e">🎯</span>إتقاني</button>
+    <button data-t="examSetup" onclick="tab('examSetup')"><span class="e">⏱️</span>امتحان</button>
+    <button data-t="stats" onclick="tab('stats')"><span class="e">📈</span>تقدّمي</button>
+    <button data-t="settings" onclick="tab('settings')"><span class="e">⚙️</span>الإعدادات</button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+
+<script>
+const UNITS = [
+  {
+    "n": 1,
+    "sem": 1,
+    "title": "من القيم الإنسانية في القرآن",
+    "lessons": [
+      {
+        "id": "u1l1",
+        "type": "q",
+        "title": "أسلوب الطلب وجوابه المجزوم",
+        "summary": "<h3>دليل الدرس: أسلوب الطلب وجوابه المجزوم</h3><p><b>مرجع المنهج:</b> العربية لغتي، الفصل الأول، ص 24–27. هذا شرح تعليمي أصلي، وليس نقلًا لنص الكتاب.</p><h3>1. الفكرة الأساسية</h3><p>قد يأتي فعل مضارع بعد طلبٍ فيكون نتيجة لامتثال ذلك الطلب، ويُجزم إذا صح تقدير شرط جازم مع فعل شرط محذوف. مثال: <b>احفظْ القاعدةَ تفهمْ أمثلتَها</b>؛ والتقدير: إن تحفظْ القاعدةَ تفهمْ أمثلتها.</p><h3>2. كيف أميز الطلب والجواب؟</h3><ul><li>حدّد فعل الطلب أولًا، مثل: اكتبْ، اجتهدوا، لا تُهمِلْ.</li><li>ابحث عن المضارع الذي يترتب معناه على تنفيذ الطلب.</li><li>جرّب إدخال «إنْ» مع فعل شرط مناسب؛ فإن استقام المعنى كان ذلك قرينة على الجزم في جواب الطلب.</li><li>ليس كل مضارع يأتي بعد الأمر مجزومًا؛ فقد يكون مرفوعًا للاستئناف أو منصوبًا بأداة نصب.</li></ul><h3>3. علامات جزم المضارع</h3><p><b>السكون:</b> ادرسْ <b>تنجحْ</b> (صحيح الآخر). <b>حذف حرف العلة:</b> اعملْ خيرًا <b>تلقَ</b> جزاءه (معتل الآخر). <b>حذف النون:</b> تعاونوا <b>تفوزوا</b> (من الأفعال الخمسة).</p><h3>4. علامات بناء فعل الأمر</h3><ul><li>السكون: اكتبْ؛ وكذلك مع نون النسوة: اكتبْنَ.</li><li>الفتح عند اتصال نون التوكيد المباشرة: اكتبَنَّ.</li><li>حذف حرف العلة: اسعَ، ادعُ، ارمِ.</li><li>حذف النون مع ألف الاثنين أو واو الجماعة أو ياء المخاطبة: اكتبا، اكتبوا، اكتبي.</li></ul><h3>5. ملاحظات في الضبط</h3><p>إذا تلا الفعل المجزوم الصحيح الآخر ساكن، فقد يحرك آخره بالكسر منعًا لالتقاء الساكنين: <b>تحلَّ بالأدب تبلغِ المعاليَ</b>. وفي الفعل الأجوف مثل «يُعِنْ» حُذفت ياء المد لالتقاء الساكنين، وعلامة الجزم السكون.</p><h3>6. إعراب نموذجي</h3><p><b>اجتهدوا تنجحوا:</b> اجتهدوا: فعل أمر مبني على حذف النون، وواو الجماعة فاعل. تنجحوا: مضارع مجزوم في جواب الطلب وعلامة جزمه حذف النون، وواو الجماعة فاعل.</p><h3>7. أخطاء شائعة</h3><ul><li>اعتبار حذف الياء من وسط «يُعِنْ» علامة الجزم: الصحيح أن العلامة السكون.</li><li>الخلط بين «لا» الناهية و«لا» النافية.</li><li>القول إن أي فعل مضارع يأتي بعد الأمر مجزوم حتمًا.</li></ul><h3>تدريب ذاتي</h3><p>كوّن ثلاث جمل: جوابًا صحيح الآخر، وجوابًا معتل الآخر، وجوابًا من الأفعال الخمسة، ثم أعرب الأفعال.</p>",
+        "questions": [
+          {
+            "q": "في جملة «ادرسْ تنجحْ»، الفعل «تنجحْ»:",
+            "o": [
+              "مضارع مجزوم لأنه جواب الطلب",
+              "فعل أمر مبني على السكون",
+              "مضارع مجزوم بلا الناهية",
+              "مضارع مرفوع"
+            ],
+            "why": "وقع جوابًا لفعل الأمر «ادرسْ»، والتقدير: إنْ تدرسْ تنجحْ."
+          },
+          {
+            "q": "ما علامة جزم «ترَ» في «كُنْ جميلًا ترَ الوجودَ جميلا»؟",
+            "o": [
+              "حذف حرف العلة",
+              "السكون",
+              "حذف النون",
+              "الفتحة"
+            ],
+            "why": "الفعل «ترى» معتل الآخر بالألف، وقد حُذفت ألفه للجزم فصار «ترَ»."
+          },
+          {
+            "q": "أيّ الجمل الآتية فيها مضارع مجزوم في جواب الطلب؟",
+            "o": [
+              "اجتهدْ تفُزْ",
+              "اجتهدْ لكي تفوزَ",
+              "اجتهدْ فأنت فائز",
+              "إنك تفوز إذا اجتهدت"
+            ],
+            "why": "«تفُزْ» جاء بعد الأمر مباشرة دون فاء وهو نتيجة له، أما «لكي تفوزَ» فمنصوب بكي."
+          },
+          {
+            "q": "سبب جزم الفعل المضارع في جواب الطلب هو:",
+            "o": [
+              "أنه جواب لشرط محذوف مقدَّر",
+              "أنه مسبوق بـ«لم»",
+              "أنه معطوف على فعل الأمر",
+              "أنه في أول الكلام"
+            ],
+            "why": "جملة الطلب تتضمن شرطًا محذوفًا، فالمضارع جواب لهذا الشرط المقدّر."
+          },
+          {
+            "q": "التقدير الصحيح لجملة «تعلّمْ تتقدّمْ» هو:",
+            "o": [
+              "إنْ تتعلمْ تتقدمْ",
+              "لأنك تتعلم تتقدم",
+              "لم تتعلم فتتقدم",
+              "تعلّمْ حتى تتقدم"
+            ],
+            "why": "نقدّر أداة الشرط «إنْ» وفعل الشرط من لفظ الأمر: إنْ تتعلمْ تتقدمْ."
+          },
+          {
+            "q": "«تعاونوا تنجحوا»: علامة جزم «تنجحوا»:",
+            "o": [
+              "حذف النون",
+              "السكون",
+              "حذف حرف العلة",
+              "الضمة المقدرة"
+            ],
+            "why": "«تنجحوا» من الأفعال الخمسة، أصله «تنجحون»، فحُذفت النون للجزم."
+          },
+          {
+            "q": "اختر الكلمة المناسبة: «ساعدِ المحتاجَ ____ اللهُ»",
+            "o": [
+              "يُعِنْكَ",
+              "يُعينُكَ",
+              "يُعينَكَ",
+              "يُعينوكَ"
+            ],
+            "why": "«يُعِنْ» جواب الطلب مجزوم بالسكون، وحُذفت الياء من وسطه لالتقاء الساكنين بعد الجزم؛ فحذفها ليس علامة الجزم."
+          },
+          {
+            "q": "فعل الأمر «اصدُقْ» مبني على:",
+            "o": [
+              "السكون",
+              "الفتح",
+              "حذف حرف العلة",
+              "حذف النون"
+            ],
+            "why": "فعل صحيح الآخر لم يتصل به شيء، فيُبنى على السكون."
+          },
+          {
+            "q": "فعل الأمر «اسعَ» في «اسعَ إلى الخير» مبني على:",
+            "o": [
+              "حذف حرف العلة",
+              "السكون",
+              "الفتح",
+              "حذف النون"
+            ],
+            "why": "أصله من «يسعى» وهو معتل الآخر بالألف، فيُبنى الأمر على حذف حرف العلة."
+          },
+          {
+            "q": "إعراب «تشعري» في «أخلصي في عملكِ تشعري بالسعادة»:",
+            "o": [
+              "مضارع مجزوم لأنه جواب الطلب وعلامة جزمه حذف النون",
+              "فعل أمر مبني على حذف النون",
+              "مضارع مرفوع وعلامة رفعه ثبوت النون",
+              "مضارع منصوب وعلامة نصبه حذف النون"
+            ],
+            "why": "«تشعري» جواب للطلب «أخلصي» فهو مجزوم، ومن الأفعال الخمسة فعلامة جزمه حذف النون."
+          },
+          {
+            "q": "«لا تُهمِلْ دروسَك تنجحْ»: «تنجحْ»",
+            "o": [
+              "مضارع مجزوم في جواب الطلب",
+              "مضارع منصوب",
+              "فعل أمر",
+              "ماضٍ"
+            ],
+            "why": "الجواب نتيجة لامتثال النهي."
+          },
+          {
+            "q": "علامة جزم «تسعَ» في «اجتهدْ تسعَ إلى التفوق»",
+            "o": [
+              "حذف حرف العلة",
+              "حذف النون",
+              "الضمة",
+              "الفتحة"
+            ],
+            "why": "الفعل معتل الآخر بالألف."
+          },
+          {
+            "q": "«ادعُ اللهَ يستجبْ لك»: «يستجبْ»",
+            "o": [
+              "جواب طلب مجزوم",
+              "فعل أمر",
+              "مضارع منصوب",
+              "مضارع مرفوع"
+            ],
+            "why": "يمكن تقدير: إن تدعُ الله يستجبْ لك."
+          },
+          {
+            "q": "«تعاونوا تفلحوا»: علامة جزم «تفلحوا»",
+            "o": [
+              "حذف النون",
+              "حذف حرف العلة",
+              "السكون الظاهر",
+              "الكسرة"
+            ],
+            "why": "الفعل من الأفعال الخمسة."
+          },
+          {
+            "q": "«أحسنْ إلى الناس يحبّوك»: علامة جزم «يحبّوك»",
+            "o": [
+              "حذف النون",
+              "السكون",
+              "حذف حرف العلة",
+              "الفتحة"
+            ],
+            "why": "الأصل يحبونك؛ وهو من الأفعال الخمسة."
+          },
+          {
+            "q": "أي فعل جواب الطلب مجزوم؟ «اقرأْ تفهمْ»",
+            "o": [
+              "تفهمْ",
+              "اقرأْ",
+              "كلاهما",
+              "لا واحد منهما"
+            ],
+            "why": "تفهمْ جواب أمر مجزوم."
+          },
+          {
+            "q": "«لا تُسرفْ تندمْ»: علامة جزم «تندمْ»",
+            "o": [
+              "السكون",
+              "حذف النون",
+              "حذف حرف العلة",
+              "الفتح"
+            ],
+            "why": "الفعل صحيح الآخر."
+          },
+          {
+            "q": "الفعل «اكتبي» أمر مبني على",
+            "o": [
+              "حذف النون",
+              "السكون",
+              "حذف حرف العلة",
+              "الفتح"
+            ],
+            "why": "لاتصاله بياء المخاطبة."
+          },
+          {
+            "q": "«اسعَ إلى الخير تنلْ ثوابه»: «تنلْ»",
+            "o": [
+              "جواب الطلب المجزوم",
+              "فعل أمر",
+              "مضارع منصوب",
+              "مضارع مرفوع"
+            ],
+            "why": "النتيجة مترتبة على السعي."
+          },
+          {
+            "q": "أي جملة لا تتضمن جواب طلب مجزومًا؟",
+            "o": [
+              "اجتهدْ لكي تنجحَ",
+              "اجتهدْ تنجحْ",
+              "احفظْ تفهمْ",
+              "أخلصْ تُؤجرْ"
+            ],
+            "why": "الفعل بعد كي منصوب، لا جواب طلب مجزوم."
+          },
+          {
+            "q": "ما علامة جزم «يرمِ» في «تدرّبْ يرمِ فريقُك الكرةَ بإتقان»؟",
+            "o": [
+              "حذف حرف العلة",
+              "حذف النون",
+              "السكون",
+              "الفتحة"
+            ],
+            "why": "يرمي معتل الآخر بالياء، فتحذف الياء عند الجزم."
+          },
+          {
+            "q": "«اقرآ الدرسَ تفهماه»: علامة جزم «تفهماه»",
+            "o": [
+              "حذف النون",
+              "حذف حرف العلة",
+              "السكون",
+              "الفتحة"
+            ],
+            "why": "الفعل من الأفعال الخمسة، وأصله تفهمانه."
+          },
+          {
+            "q": "ما نوع «لا» في «لا تُهمِلْ عملَك تنجحْ»؟",
+            "o": [
+              "ناهية جازمة",
+              "نافية غير عاملة",
+              "نافية للجنس",
+              "زائدة"
+            ],
+            "why": "لا الناهية تطلب الكف عن الفعل وتجزم المضارع بعدها."
+          },
+          {
+            "q": "ما إعراب «تُهمِلْ» في «لا تُهمِلْ واجبَك»؟",
+            "o": [
+              "مضارع مجزوم بلا الناهية",
+              "مضارع مجزوم في جواب الطلب",
+              "مضارع منصوب",
+              "فعل أمر"
+            ],
+            "why": "الفعل مسبوق بلا الناهية، وليس هو جواب الطلب."
+          },
+          {
+            "q": "ما علامة بناء «اكتبْنَ» في خطاب جماعة الإناث؟",
+            "o": [
+              "السكون",
+              "حذف النون",
+              "الفتح",
+              "حذف حرف العلة"
+            ],
+            "why": "فعل الأمر المتصل بنون النسوة مبني على السكون."
+          },
+          {
+            "q": "ما علامة بناء «اكتبَنَّ»؟",
+            "o": [
+              "الفتح",
+              "السكون",
+              "حذف النون",
+              "حذف حرف العلة"
+            ],
+            "why": "يبنى الأمر على الفتح إذا اتصلت به نون التوكيد المباشرة."
+          },
+          {
+            "q": "ما سبب كسر آخر «تبلغِ» في «تحلَّ بالأدب تبلغِ المعاليَ»؟",
+            "o": [
+              "التخلص من التقاء الساكنين",
+              "علامة الجر",
+              "علامة النصب",
+              "علامة الرفع"
+            ],
+            "why": "الأصل تبلغْ، وحُرك بالكسر قبل الساكن."
+          },
+          {
+            "q": "أي الجمل الآتية تحوي أمرًا مبنيًا على حذف حرف العلة؟",
+            "o": [
+              "ادعُ إلى الخير",
+              "اكتبْ الدرس",
+              "اكتبوا الدرس",
+              "اكتبَنَّ الدرس"
+            ],
+            "why": "ادعُ أمر من دعا، وهو معتل الآخر."
+          },
+          {
+            "q": "في «لا تتأخرْ تدركْ البدايةَ» الجواب المجزوم هو",
+            "o": [
+              "تدركْ",
+              "تتأخرْ",
+              "لا",
+              "البدايةَ"
+            ],
+            "why": "تدركْ جواب النهي، ويصح تقدير الشرط بحسب المعنى."
+          },
+          {
+            "q": "ما الشرط الدلالي الأهم لجزم المضارع في جواب الطلب؟",
+            "o": [
+              "أن يكون مترتبًا على امتثال الطلب",
+              "أن يسبق بكي",
+              "أن يكون ماضيًا",
+              "أن يبدأ بفاء الاستئناف"
+            ],
+            "why": "يشترط أن يصلح أن يكون نتيجة لامتثال الطلب."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 2,
+    "sem": 1,
+    "title": "في حب الوطن",
+    "lessons": [
+      {
+        "id": "u2l1",
+        "type": "q",
+        "title": "صور الفاعل",
+        "summary": "<h3>دليل الدرس: صور الفاعل</h3><p><b>مرجع المنهج:</b> ص 43–47. شرح وأمثلة من إنشاء التطبيق.</p><h3>1. تعريف الفاعل</h3><p>اسم مرفوع أو مبني في محل رفع أُسند إليه فعل مبني للمعلوم. وقد يأتي في صورة مصدر مؤول.</p><h3>2. صور الفاعل الست في الكتاب</h3><ul><li><b>اسم ظاهر:</b> حضرَ <b>المعلمُ</b>.</li><li><b>ضمير متصل:</b> كتب<b>تُ</b>؛ حضر<b>نا</b>؛ نجح<b>وا</b>؛ تدرُس<b>ين</b> (ياء المخاطبة).</li><li><b>ضمير مستتر:</b> أكتبُ (أنا)، نقرأُ (نحن)، اجتهدْ (أنت).</li><li><b>اسم موصول:</b> فازَ <b>الذي</b> ثابرَ.</li><li><b>اسم إشارة:</b> وصلَ <b>هذا</b>.</li><li><b>مصدر مؤول:</b> يسعدُني <b>أنْ تتقدمَ</b>، أي: تقدُّمُك.</li></ul><h3>3. علامات رفع الفاعل</h3><p><b>الضمة الظاهرة:</b> حضرَ الطالبُ. <b>الضمة المقدرة للثقل:</b> حكمَ القاضي. <b>الضمة المقدرة للتعذر:</b> جاءتْ ليلى. <b>الألف:</b> فازَ الطالبان. <b>الواو:</b> نجحَ المعلمون؛ حضرَ ذو خبرةٍ.</p><h3>4. المبني في محل رفع</h3><p>الضمائر وأسماء الإشارة والأسماء الموصولة المبنية لا تظهر عليها علامات الإعراب، فنقول: ضمير أو اسم مبني في محل رفع فاعل.</p><h3>5. فروق مهمة</h3><p>«حضرتْ المعلمةُ»: التاء حرف تأنيث لا محل له، والمعلمة فاعل. «الطلابُ نجحوا»: الطلاب مبتدأ، وواو الجماعة فاعل للفعل نجحوا. «نجحَ الطلابُ»: الطلاب فاعل.</p><h3>6. إعراب تطبيقي</h3><p>«يسرّني أنْ تتعلمَ»: يسرّ فعل مضارع مرفوع، والنون للوقاية، والياء مفعول به، والمصدر المؤول «أنْ تتعلمَ» في محل رفع فاعل.</p><h3>7. أخطاء شائعة</h3><ul><li>اعتبار تاء التأنيث الساكنة فاعلًا.</li><li>اعتبار الاسم المتقدم على الفعل فاعلًا في كل الأحوال.</li><li>نسيان أن المصدر المؤول قد يقع فاعلًا.</li></ul><h3>تدريب ذاتي</h3><p>اكتب مثالًا مستقلًا لكل صورة من صور الفاعل الست، وحدد علامة الرفع أو المحل الإعرابي.</p>",
+        "questions": [
+          {
+            "q": "الفاعل في «فاز الفريقُ» جاء:",
+            "o": [
+              "اسمًا ظاهرًا",
+              "ضميرًا متصلًا",
+              "ضميرًا مستترًا",
+              "مصدرًا مؤولًا"
+            ],
+            "why": "«الفريقُ» اسم ظاهر مرفوع وقع بعد الفعل «فاز»."
+          },
+          {
+            "q": "الفاعل في «كتبتُ الدرسَ»:",
+            "o": [
+              "التاء، ضمير متصل",
+              "الدرس",
+              "ضمير مستتر تقديره أنا",
+              "لا يوجد فاعل"
+            ],
+            "why": "تاء الفاعل ضمير متصل مبني في محل رفع فاعل."
+          },
+          {
+            "q": "الفاعل في «الطالبُ يجتهدُ»:",
+            "o": [
+              "ضمير مستتر تقديره هو",
+              "الطالب",
+              "يجتهد",
+              "لا يوجد فاعل"
+            ],
+            "why": "«الطالب» مبتدأ، وفاعل «يجتهد» ضمير مستتر يعود عليه تقديره هو."
+          },
+          {
+            "q": "الفاعل في «يسرّني أنْ تنجحَ»:",
+            "o": [
+              "المصدر المؤول من أنْ والفعل",
+              "ياء المتكلم",
+              "ضمير مستتر تقديره أنت",
+              "أنْ"
+            ],
+            "why": "«أنْ تنجحَ» مصدر مؤول في محل رفع فاعل، والتقدير: يسرّني نجاحُك."
+          },
+          {
+            "q": "تقدير المصدر المؤول في «يسعدني أنْ تتفوقي»:",
+            "o": [
+              "تفوّقُكِ",
+              "التفوقَ",
+              "أنتِ",
+              "سعادتي"
+            ],
+            "why": "نحوّل «أنْ تتفوقي» إلى مصدر صريح مضاف إلى الضمير: تفوّقُكِ."
+          },
+          {
+            "q": "الفاعل في «لا تسألي الناسَ عن مالي»:",
+            "o": [
+              "ياء المخاطبة",
+              "الناس",
+              "ضمير مستتر تقديره أنتِ",
+              "ياء المتكلم في مالي"
+            ],
+            "why": "ياء المخاطبة ضمير متصل في محل رفع فاعل."
+          },
+          {
+            "q": "الفاعل في فعل الأمر «اجتهدْ»:",
+            "o": [
+              "ضمير مستتر وجوبًا تقديره أنت",
+              "ضمير متصل",
+              "اسم ظاهر محذوف",
+              "لا فاعل لفعل الأمر"
+            ],
+            "why": "فاعل فعل الأمر للمفرد المذكر ضمير مستتر وجوبًا تقديره أنت."
+          },
+          {
+            "q": "الفاعل في «الطلابُ نجحوا»:",
+            "o": [
+              "واو الجماعة",
+              "الطلاب",
+              "ضمير مستتر تقديره هم",
+              "نجحوا"
+            ],
+            "why": "واو الجماعة ضمير متصل في محل رفع فاعل، و«الطلاب» مبتدأ."
+          },
+          {
+            "q": "الحكم الإعرابي للفاعل دائمًا:",
+            "o": [
+              "الرفع",
+              "النصب",
+              "الجر",
+              "الجزم"
+            ],
+            "why": "الفاعل مرفوع لفظًا أو محلًّا."
+          },
+          {
+            "q": "في «حضرتِ المعلمةُ» التاء في «حضرتْ»:",
+            "o": [
+              "تاء التأنيث الساكنة لا محل لها",
+              "ضمير متصل في محل رفع فاعل",
+              "ضمير في محل نصب",
+              "تاء المخاطبة"
+            ],
+            "why": "هي تاء التأنيث، حرف لا محل له من الإعراب، والفاعل «المعلمةُ»."
+          },
+          {
+            "q": "في «حضرَ الضيوفُ» الفاعل",
+            "o": [
+              "الضيوفُ",
+              "حضرَ",
+              "ضمير مستتر",
+              "لا فاعل"
+            ],
+            "why": "الضيوف اسم ظاهر مرفوع."
+          },
+          {
+            "q": "في «كتبتْ هندٌ» الفاعل",
+            "o": [
+              "هندٌ",
+              "التاء",
+              "ضمير مستتر",
+              "كتبت"
+            ],
+            "why": "التاء للتأنيث، وهند فاعل."
+          },
+          {
+            "q": "في «سافرنا» الفاعل",
+            "o": [
+              "نا المتكلمين",
+              "ضمير مستتر",
+              "الألف",
+              "لا فاعل"
+            ],
+            "why": "نا ضمير متصل في محل رفع فاعل."
+          },
+          {
+            "q": "في «الطلاب يكتبون» فاعل يكتبون",
+            "o": [
+              "واو الجماعة",
+              "الطلاب",
+              "ضمير مستتر",
+              "النون"
+            ],
+            "why": "الواو ضمير فاعل، والطلاب مبتدأ."
+          },
+          {
+            "q": "في «يسعدني أنْ أتعلمَ» الفاعل",
+            "o": [
+              "المصدر المؤول",
+              "ياء المتكلم",
+              "ضمير مستتر",
+              "أن وحدها"
+            ],
+            "why": "التعلم مصدر مؤول في محل رفع فاعل."
+          },
+          {
+            "q": "في «اذهبي» الفاعل",
+            "o": [
+              "ياء المخاطبة",
+              "ضمير مستتر",
+              "الألف",
+              "النون"
+            ],
+            "why": "ياء المخاطبة ضمير متصل في محل رفع فاعل."
+          },
+          {
+            "q": "في «نقرأُ كل يوم» الفاعل",
+            "o": [
+              "ضمير مستتر تقديره نحن",
+              "ضمير متصل",
+              "كل",
+              "يوم"
+            ],
+            "why": "فاعل نقرأ مستتر وجوبًا تقديره نحن."
+          },
+          {
+            "q": "في «قرأَ أخي» الفاعل",
+            "o": [
+              "أخي",
+              "ضمير مستتر",
+              "الياء وحدها",
+              "قرأ"
+            ],
+            "why": "أخي فاعل مرفوع بضمة مقدرة على ما قبل ياء المتكلم."
+          },
+          {
+            "q": "في «أحبُّ العلمَ» الفاعل",
+            "o": [
+              "ضمير مستتر تقديره أنا",
+              "العلم",
+              "ضمير متصل",
+              "لا فاعل"
+            ],
+            "why": "فاعل أحب مستتر وجوبًا تقديره أنا."
+          },
+          {
+            "q": "الفاعل في «يسرُّني نجاحُك»",
+            "o": [
+              "نجاحُك",
+              "ياء المتكلم",
+              "ضمير مستتر",
+              "الكاف"
+            ],
+            "why": "نجاح فاعل مرفوع، والكاف مضاف إليه."
+          },
+          {
+            "q": "في «جاءَ هذا مبكرًا» الفاعل هو",
+            "o": [
+              "هذا",
+              "ضمير مستتر",
+              "مبكرًا",
+              "جاء"
+            ],
+            "why": "اسم الإشارة «هذا» مبني في محل رفع فاعل."
+          },
+          {
+            "q": "في «نجحَ الذي اجتهدَ» الفاعل هو",
+            "o": [
+              "الذي",
+              "ضمير مستتر",
+              "اجتهد",
+              "نجح"
+            ],
+            "why": "الذي اسم موصول مبني في محل رفع فاعل."
+          },
+          {
+            "q": "علامة رفع «المعلمون» في «حضرَ المعلمون»",
+            "o": [
+              "الواو",
+              "الألف",
+              "الضمة",
+              "الياء"
+            ],
+            "why": "جمع المذكر السالم يرفع بالواو."
+          },
+          {
+            "q": "علامة رفع «الطالبان» في «فازَ الطالبان»",
+            "o": [
+              "الألف",
+              "الواو",
+              "الضمة",
+              "الياء"
+            ],
+            "why": "المثنى يرفع بالألف."
+          },
+          {
+            "q": "علامة رفع «ذو» في «حضرَ ذو خبرةٍ»",
+            "o": [
+              "الواو",
+              "الألف",
+              "الضمة",
+              "الياء"
+            ],
+            "why": "ذو من الأسماء الخمسة عند استيفاء شروطها."
+          },
+          {
+            "q": "علامة رفع «القاضي» في «حكمَ القاضي»",
+            "o": [
+              "ضمة مقدرة للثقل",
+              "ضمة ظاهرة",
+              "ألف",
+              "واو"
+            ],
+            "why": "الاسم المنقوص تقدر عليه الضمة للثقل."
+          },
+          {
+            "q": "علامة رفع «ليلى» في «تحدثتْ ليلى»",
+            "o": [
+              "ضمة مقدرة للتعذر",
+              "ضمة ظاهرة",
+              "واو",
+              "ألف"
+            ],
+            "why": "الاسم المقصور تقدر عليه الضمة للتعذر."
+          },
+          {
+            "q": "في «الطالبتان تدرسان» فاعل تدرسان هو",
+            "o": [
+              "ألف الاثنين",
+              "الطالبتان",
+              "ضمير مستتر",
+              "النون"
+            ],
+            "why": "ألف الاثنين ضمير متصل في محل رفع فاعل."
+          },
+          {
+            "q": "في «يُفرحُني أنْ تنجحَ» المصدر المؤول في محل",
+            "o": [
+              "رفع فاعل",
+              "نصب مفعول به",
+              "جر بحرف الجر",
+              "رفع مبتدأ"
+            ],
+            "why": "التقدير: يفرحني نجاحك."
+          },
+          {
+            "q": "في «ذهبَتْ فاطمةُ» ما وظيفة التاء؟",
+            "o": [
+              "تاء تأنيث ساكنة لا محل لها",
+              "فاعل مرفوع",
+              "مفعول به",
+              "ضمير نصب"
+            ],
+            "why": "التاء علامة تأنيث، و«فاطمة» هي الفاعل."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 3,
+    "sem": 1,
+    "title": "أمراض العصر",
+    "lessons": [
+      {
+        "id": "u3l1",
+        "type": "q",
+        "title": "صور المبتدأ والخبر",
+        "summary": "<h3>دليل الدرس: من صور المبتدأ والخبر</h3><p><b>مرجع المنهج:</b> ص 63–67. شرح تعليمي أصلي.</p><h3>1. الجملة الاسمية</h3><p>تتألف في أصلها من مبتدأ وخبر: <b>الصدقُ فضيلةٌ</b>. المبتدأ محكوم عليه، والخبر يحقق الفائدة.</p><h3>2. صور المبتدأ في الكتاب</h3><ul><li>اسم ظاهر: الوقايةُ نافعةٌ.</li><li>ضمير منفصل: أنا مجتهدٌ.</li><li>اسم إشارة: هذا مفيدٌ.</li><li>اسم موصول: الذي يعملُ ناجحٌ.</li><li>مصدر مؤول: أنْ تتعاونوا خيرٌ لكم.</li></ul><h3>3. صور الخبر</h3><ul><li><b>مفرد:</b> العلمُ نورٌ؛ والمفرد هنا ما ليس جملة ولا شبه جملة، ولو كان مثنى أو جمعًا.</li><li><b>جملة اسمية:</b> الطالبُ خُلُقُه كريمٌ، والرابط الهاء.</li><li><b>جملة فعلية:</b> الطالبُ يقرأُ.</li><li><b>شبه جملة جار ومجرور:</b> الكتابُ في الحقيبةِ.</li><li><b>شبه جملة ظرفية:</b> العصفورُ فوقَ الشجرةِ.</li><li><b>مصدر مؤول:</b> الصوابُ أنْ تعتذرَ.</li></ul><h3>4. علامات الرفع</h3><p>الضمة الظاهرة: الطالبُ مجتهدٌ. الألف للمثنى: الطالبان متفوقان. الواو لجمع المذكر السالم والأسماء الخمسة: المعلمون مخلصون؛ ذو العلم محترمٌ. الضمة المقدرة: الهدى نورٌ؛ القاضي عادلٌ؛ أختي طبيبةٌ.</p><h3>5. فرق أساسي</h3><p>الخبر المفرد مرفوع، والجملة الخبرية في محل رفع. أما شبه الجملة فيتعلق بمحذوف خبر وفق التحليل النحوي المعتمد في الشرح المدرسي.</p><h3>6. مثال إعرابي</h3><p>«الظلمُ مرتعُه وخيمٌ»: الظلم مبتدأ أول، مرتعُه مبتدأ ثان، وخيم خبر المبتدأ الثاني، والجملة الاسمية «مرتعُه وخيم» في محل رفع خبر المبتدأ الأول.</p><h3>7. أخطاء شائعة</h3><ul><li>اعتبار «المعلمون» خبرًا مفردًا لمجرد أنه جمع: الخبر المفرد قد يكون جمعًا.</li><li>نسيان الرابط في جملة الخبر.</li><li>الخلط بين الضمة المقدرة والضمة الظاهرة.</li></ul><h3>تدريب ذاتي</h3><p>حوّل «العلمُ نافعٌ» إلى جملة خبرها فعلية، ثم إلى جملة خبرها شبه جملة، وبيّن موضع الخبر.</p>",
+        "questions": [
+          {
+            "q": "المبتدأ في «أنْ تصدقَ خيرٌ لك» جاء:",
+            "o": [
+              "مصدرًا مؤولًا",
+              "اسمًا ظاهرًا",
+              "ضميرًا منفصلًا",
+              "اسم شرط"
+            ],
+            "why": "«أنْ تصدقَ» مصدر مؤول في محل رفع مبتدأ، والتقدير: صدقُك خيرٌ لك."
+          },
+          {
+            "q": "المبتدأ في «هو مجتهدٌ» جاء:",
+            "o": [
+              "ضميرًا منفصلًا",
+              "ضميرًا مستترًا",
+              "اسمًا ظاهرًا",
+              "مصدرًا مؤولًا"
+            ],
+            "why": "«هو» ضمير منفصل مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "«ما» في «ما أجملَ السماءَ!» إعرابها:",
+            "o": [
+              "تعجبية في محل رفع مبتدأ",
+              "نافية لا محل لها",
+              "استفهامية في محل نصب",
+              "موصولة في محل جر"
+            ],
+            "why": "«ما» التعجبية اسم مبني في محل رفع مبتدأ، وجملة «أجملَ السماءَ» خبرها."
+          },
+          {
+            "q": "«مَن» في «مَن يجتهدْ ينجحْ» إعرابها:",
+            "o": [
+              "اسم شرط في محل رفع مبتدأ",
+              "اسم موصول في محل نصب",
+              "حرف شرط لا محل له",
+              "اسم استفهام في محل جر"
+            ],
+            "why": "«مَن» اسم شرط جازم مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "الخبر في «الظلمُ مرتعُهُ وخيمٌ» جاء:",
+            "o": [
+              "جملة اسمية",
+              "جملة فعلية",
+              "مفردًا",
+              "شبه جملة"
+            ],
+            "why": "«مرتعُهُ وخيمٌ» جملة اسمية من مبتدأ وخبر، في محل رفع خبر للمبتدأ «الظلم»."
+          },
+          {
+            "q": "الخبر في «العلمُ يرفعُ صاحبَه» جاء:",
+            "o": [
+              "جملة فعلية",
+              "جملة اسمية",
+              "مفردًا",
+              "مصدرًا مؤولًا"
+            ],
+            "why": "«يرفعُ صاحبَه» جملة فعلية في محل رفع خبر."
+          },
+          {
+            "q": "الخبر في «الكتابُ على الطاولة» جاء:",
+            "o": [
+              "شبه جملة",
+              "مفردًا",
+              "جملة فعلية",
+              "جملة اسمية"
+            ],
+            "why": "«على الطاولة» شبه جملة من جار ومجرور، متعلّق بمحذوف يُقدّر خبرًا، نحو «مستقرّ»."
+          },
+          {
+            "q": "الخبر في «المعلمون جنودٌ» جاء:",
+            "o": [
+              "مفردًا",
+              "جملة اسمية",
+              "شبه جملة",
+              "مصدرًا مؤولًا"
+            ],
+            "why": "«جنودٌ» كلمة واحدة ليست جملة ولا شبه جملة، فهو خبر مفرد مرفوع."
+          },
+          {
+            "q": "الخبر في «الصوابُ أنْ تعتذرَ» جاء:",
+            "o": [
+              "مصدرًا مؤولًا",
+              "جملة فعلية",
+              "مفردًا",
+              "شبه جملة"
+            ],
+            "why": "«أنْ تعتذرَ» مصدر مؤول في محل رفع خبر، والتقدير: الصوابُ اعتذارُك."
+          },
+          {
+            "q": "الحكم الإعرابي للمبتدأ والخبر:",
+            "o": [
+              "الرفع",
+              "النصب",
+              "المبتدأ مرفوع والخبر منصوب",
+              "الجر"
+            ],
+            "why": "المبتدأ والخبر كلاهما مرفوع لفظًا أو محلًّا."
+          },
+          {
+            "q": "الخبر في «الصدقُ فضيلةٌ»",
+            "o": [
+              "مفرد",
+              "جملة اسمية",
+              "جملة فعلية",
+              "شبه جملة"
+            ],
+            "why": "فضيلة خبر مفرد."
+          },
+          {
+            "q": "الخبر في «الطالبُ خُلُقُه حسنٌ»",
+            "o": [
+              "جملة اسمية",
+              "مفرد",
+              "شبه جملة",
+              "جملة فعلية"
+            ],
+            "why": "خلقه حسن جملة اسمية في محل رفع خبر."
+          },
+          {
+            "q": "الخبر في «الطائرُ يغردُ»",
+            "o": [
+              "جملة فعلية",
+              "مفرد",
+              "جملة اسمية",
+              "شبه جملة"
+            ],
+            "why": "يغرد جملة فعلية خبر."
+          },
+          {
+            "q": "الخبر في «المفاتيحُ في الحقيبة»",
+            "o": [
+              "شبه جملة",
+              "مفرد",
+              "جملة اسمية",
+              "جملة فعلية"
+            ],
+            "why": "في الحقيبة جار ومجرور متعلق بمحذوف خبر."
+          },
+          {
+            "q": "المبتدأ في «نحنُ مجتهدون»",
+            "o": [
+              "ضمير منفصل",
+              "اسم ظاهر",
+              "مصدر مؤول",
+              "اسم شرط"
+            ],
+            "why": "نحن ضمير منفصل مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "المبتدأ في «أنْ تتعاونوا خيرٌ لكم»",
+            "o": [
+              "مصدر مؤول",
+              "اسم شرط",
+              "ضمير منفصل",
+              "خبر"
+            ],
+            "why": "أن تتعاونوا تؤول بتعاونكم."
+          },
+          {
+            "q": "الخبر في «النجاحُ أنْ تثابرَ»",
+            "o": [
+              "مصدر مؤول",
+              "جملة فعلية",
+              "شبه جملة",
+              "جملة اسمية"
+            ],
+            "why": "أن تثابر تؤول بمثابرتك."
+          },
+          {
+            "q": "المبتدأ في «مَن يزرعْ يحصدْ»",
+            "o": [
+              "اسم شرط",
+              "اسم استفهام",
+              "ضمير منفصل",
+              "حرف شرط"
+            ],
+            "why": "من اسم شرط جازم مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "في «العلمُ نورٌ» الخبر",
+            "o": [
+              "نورٌ",
+              "العلمُ",
+              "محذوف",
+              "لا خبر"
+            ],
+            "why": "نور خبر مرفوع بالضمة."
+          },
+          {
+            "q": "في «الكتابُ فوقَ المكتبِ» الخبر",
+            "o": [
+              "شبه جملة ظرفية",
+              "جملة فعلية",
+              "مفرد",
+              "جملة اسمية"
+            ],
+            "why": "فوق المكتب شبه جملة ظرفية متعلق بمحذوف خبر."
+          },
+          {
+            "q": "في «هذا نافعٌ» صورة المبتدأ",
+            "o": [
+              "اسم إشارة",
+              "اسم موصول",
+              "مصدر مؤول",
+              "ضمير مستتر"
+            ],
+            "why": "هذا اسم إشارة مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "في «الذي يجتهدُ محبوبٌ» صورة المبتدأ",
+            "o": [
+              "اسم موصول",
+              "اسم شرط",
+              "ضمير منفصل",
+              "مصدر مؤول"
+            ],
+            "why": "الذي اسم موصول مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "في «ذو الخلقِ محبوبٌ» علامة رفع المبتدأ",
+            "o": [
+              "الواو",
+              "الألف",
+              "الضمة",
+              "الياء"
+            ],
+            "why": "ذو من الأسماء الخمسة وهو مضاف."
+          },
+          {
+            "q": "في «الطالبان متفوقان» علامة رفع الخبر",
+            "o": [
+              "الألف",
+              "الواو",
+              "الياء",
+              "الفتحة"
+            ],
+            "why": "متفوقان خبر مثنى مرفوع بالألف."
+          },
+          {
+            "q": "في «المعلمون مخلصون» علامة رفع الخبر",
+            "o": [
+              "الواو",
+              "الألف",
+              "الضمة",
+              "الكسرة"
+            ],
+            "why": "مخلصون جمع مذكر سالم مرفوع بالواو."
+          },
+          {
+            "q": "في «الهدى نورٌ» علامة رفع المبتدأ",
+            "o": [
+              "ضمة مقدرة للتعذر",
+              "ضمة ظاهرة",
+              "واو",
+              "ألف"
+            ],
+            "why": "الهدى اسم مقصور تقدّر الضمة على ألفه."
+          },
+          {
+            "q": "في «القاضي عادلٌ» علامة رفع المبتدأ",
+            "o": [
+              "ضمة مقدرة للثقل",
+              "ضمة ظاهرة",
+              "واو",
+              "ألف"
+            ],
+            "why": "القاضي اسم منقوص تقدّر عليه الضمة للثقل."
+          },
+          {
+            "q": "في «أختي طبيبةٌ» علامة رفع المبتدأ",
+            "o": [
+              "ضمة مقدرة لاشتغال المحل بحركة المناسبة",
+              "ضمة ظاهرة",
+              "واو",
+              "ألف"
+            ],
+            "why": "أختي مضاف إلى ياء المتكلم، وتقدر الضمة قبل الياء."
+          },
+          {
+            "q": "في «السماءُ لونُها صافٍ» الرابط بين جملة الخبر والمبتدأ",
+            "o": [
+              "الهاء في لونها",
+              "السماء",
+              "صافٍ",
+              "أل التعريف"
+            ],
+            "why": "الضمير الهاء يعود إلى المبتدأ السماء."
+          },
+          {
+            "q": "في «القراءةُ أنْ تتأملَ المعنى» نوع الخبر",
+            "o": [
+              "مصدر مؤول",
+              "جملة فعلية",
+              "شبه جملة",
+              "اسم إشارة"
+            ],
+            "why": "أن تتأمل تؤول بمصدر صريح، وهو خبر المبتدأ."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 4,
+    "sem": 1,
+    "title": "الإعلام الرقمي",
+    "lessons": [
+      {
+        "id": "u4l1",
+        "type": "q",
+        "title": "العدد",
+        "summary": "<h3>دليل الدرس: العدد</h3><p><b>مرجع المنهج:</b> ص 85–91. هذا شرح أصلي يغطي أنماط الأعداد والتطبيقات الأساسية.</p><h3>1. مصطلحان أساسيان</h3><p><b>العدد:</b> اللفظ الدال على كمية. <b>المعدود:</b> الاسم الذي نبيّن عدده. انتبه إلى <b>مفرد المعدود</b> عند تحديد التذكير والتأنيث: «كتب» مفردها «كتاب» مذكر، و«صفحات» مفردها «صفحة» مؤنث.</p><h3>2. الواحد والاثنان</h3><p>يطابقان المعدود تذكيرًا وتأنيثًا، ويأتيان غالبًا بعده نعتًا: <b>طالبٌ واحدٌ</b>، <b>طالبتان اثنتان</b>. ويتبع النعت المنعوت في الإعراب.</p><h3>3. الأعداد من 3 إلى 10</h3><p>تخالف المعدود في التذكير والتأنيث، ويكون المعدود جمعًا مجرورًا بالإضافة: <b>ثلاثةُ طلابٍ</b>، <b>ثلاثُ طالباتٍ</b>. وتعامل «بضعة/بضع» معاملة هذه الأعداد في المطابقة والمخالفة.</p><h3>4. العددان 11 و12</h3><p>يطابق الجزآن المعدود: <b>أحدَ عشرَ طالبًا</b>، <b>إحدى عشرةَ طالبةً</b>. العدد 11 مبني على فتح الجزأين، والجزء الأول من 12 يعرب إعراب المثنى: <b>اثنا عشرَ</b> في الرفع، <b>اثني عشرَ</b> في النصب والجر، وللمؤنث: اثنتا/اثنتي عشرةَ.</p><h3>5. الأعداد من 13 إلى 19</h3><p>الجزء الأول يخالف المعدود، والثاني يطابقه: <b>ثلاثةَ عشرَ طالبًا</b>، <b>ثلاثَ عشرةَ طالبةً</b>. ويكون المعدود مفردًا منصوبًا تمييزًا.</p><h3>6. العقود من 20 إلى 90</h3><p>لا تتغير مع جنس المعدود، وتعرب إعراب جمع المذكر السالم: <b>حضر عشرونَ طالبًا</b>، <b>رأيتُ عشرينَ طالبةً</b>، <b>مررتُ بعشرينَ طالبًا</b>.</p><h3>7. الأعداد المعطوفة من 21 إلى 99</h3><p>الآحاد تتبع قواعدها، والعقود ثابتة: <b>واحدٌ وعشرونَ طالبًا</b>، <b>إحدى وعشرونَ طالبةً</b>، <b>ثلاثةٌ وعشرونَ طالبًا</b>، <b>ثلاثٌ وعشرونَ طالبةً</b>. ويتغير ضبط العدد بحسب موقعه الإعرابي.</p><h3>8. المئة والألف وما فوقهما</h3><p>يأتي المعدود بعد المئة والألف مفردًا مجرورًا بالإضافة: <b>مئةُ كتابٍ</b>، <b>ألفُ صفحةٍ</b>. وقد تتداخل هذه الأحكام في الأعداد الكبيرة، فافصل أجزاء العدد وحدد علاقة كل جزء بما يليه.</p><h3>9. خطوات حل سؤال العدد</h3><ul><li>حوّل المعدود إلى مفرده لتعرف جنسه.</li><li>حدّد فئة العدد: مفرد، مركب، عقد، معطوف، مئة أو ألف.</li><li>اضبط العدد بحسب المطابقة أو المخالفة.</li><li>حدّد إعراب العدد في الجملة، ثم اضبط المعدود: جمع مجرور أو مفرد منصوب أو مفرد مجرور.</li></ul><h3>10. أخطاء شائعة</h3><p>«ثلاثة طالبات» خطأ؛ الصواب «ثلاث طالبات». «عشرون طالبٍ» خطأ؛ الصواب «عشرون طالبًا». «رأيتُ اثنا عشر» خطأ في النصب؛ الصواب «اثني عشر».</p><h3>تدريب ذاتي</h3><p>اكتب الأعداد 2 و7 و12 و17 و25 و100 كتابةً لفظيةً مع «طالب» و«طالبة»، ثم بيّن سبب كل ضبط.</p>",
+        "questions": [
+          {
+            "q": "اختر التعبير الصحيح عن ثلاثة من الطلاب",
+            "o": [
+              "ثلاثةُ طلابٍ",
+              "ثلاثُ طلابٍ",
+              "ثلاثةُ طالبًا",
+              "ثلاثُ طالبًا"
+            ],
+            "why": "العدد من 3 إلى 10 يخالف المعدود المذكر، ويليه جمع مجرور."
+          },
+          {
+            "q": "اختر التعبير الصحيح عن ثلاث من الطالبات",
+            "o": [
+              "ثلاثُ طالباتٍ",
+              "ثلاثةُ طالباتٍ",
+              "ثلاثَ طالبةً",
+              "ثلاثةُ طالبةٍ"
+            ],
+            "why": "المعدود مؤنث، فيأتي العدد «ثلاث» بلا تاء."
+          },
+          {
+            "q": "العدد في «طالبٌ واحدٌ» يوافق المعدود في",
+            "o": [
+              "التذكير",
+              "المخالفة",
+              "الجر دائمًا",
+              "النصب دائمًا"
+            ],
+            "why": "الواحد والاثنان يطابقان المعدود."
+          },
+          {
+            "q": "الصواب في التعبير عن اثنتين من المعلمات",
+            "o": [
+              "معلمتان اثنتان",
+              "معلمتان اثنان",
+              "معلمتين اثنان",
+              "معلمة اثنتان"
+            ],
+            "why": "العدد اثنتان يطابق المعدود المؤنث ويتبعه في الإعراب."
+          },
+          {
+            "q": "المعدود بعد الأعداد من 3 إلى 10 يكون",
+            "o": [
+              "جمعًا مجرورًا",
+              "مفردًا منصوبًا",
+              "مثنى مرفوعًا",
+              "جمعًا منصوبًا دائمًا"
+            ],
+            "why": "يأتي المعدود جمعًا مجرورًا بالإضافة."
+          },
+          {
+            "q": "الصواب في «قرأتُ ... كتبٍ»",
+            "o": [
+              "خمسةَ",
+              "خمسَ",
+              "خامسةَ",
+              "خمسينَ"
+            ],
+            "why": "مفرد كتب هو كتاب مذكر، والعدد من 3 إلى 10 يخالفه."
+          },
+          {
+            "q": "الصواب في «شاهدتُ ... لوحاتٍ»",
+            "o": [
+              "خمسَ",
+              "خمسةَ",
+              "خامسةَ",
+              "خمسينَ"
+            ],
+            "why": "مفرد لوحات لوحة مؤنث؛ العدد خمس بلا تاء."
+          },
+          {
+            "q": "الصواب في «حضر ... طالبًا» عند العدد 11",
+            "o": [
+              "أحدَ عشرَ",
+              "إحدى عشرةَ",
+              "أحدَ عشرةَ",
+              "إحدى عشرَ"
+            ],
+            "why": "جزآ أحد عشر يطابقان المعدود المذكر."
+          },
+          {
+            "q": "الصواب في «حضرت ... طالبةً» عند العدد 11",
+            "o": [
+              "إحدى عشرةَ",
+              "أحدَ عشرَ",
+              "إحدى عشرَ",
+              "أحدَ عشرةَ"
+            ],
+            "why": "جزآ إحدى عشرة يطابقان المعدود المؤنث."
+          },
+          {
+            "q": "الصواب في «قرأتُ ... كتابًا» عند العدد 13",
+            "o": [
+              "ثلاثةَ عشرَ",
+              "ثلاثَ عشرةَ",
+              "ثلاثَ عشرَ",
+              "ثلاثةَ عشرةَ"
+            ],
+            "why": "الجزء الأول يخالف المعدود المذكر والثاني يطابقه."
+          },
+          {
+            "q": "الصواب في «شاهدتُ ... لوحةً» عند العدد 13",
+            "o": [
+              "ثلاثَ عشرةَ",
+              "ثلاثةَ عشرَ",
+              "ثلاثَ عشرَ",
+              "ثلاثةَ عشرةَ"
+            ],
+            "why": "الجزء الأول يخالف المعدود المؤنث والثاني يطابقه."
+          },
+          {
+            "q": "تمييز العدد 15 في «خمسة عشر كتابًا» هو",
+            "o": [
+              "كتابًا",
+              "خمسة",
+              "عشر",
+              "محذوف"
+            ],
+            "why": "تمييز الأعداد المركبة مفرد منصوب."
+          },
+          {
+            "q": "المعدود بعد الأعداد 11 إلى 99 يكون",
+            "o": [
+              "مفردًا منصوبًا",
+              "جمعًا مجرورًا",
+              "مفردًا مجرورًا",
+              "جمعًا مرفوعًا"
+            ],
+            "why": "تمييز العدد المركب والعقود والمعطوف مفرد منصوب."
+          },
+          {
+            "q": "الصواب في «في الصف ... طالبًا» عند العدد 20",
+            "o": [
+              "عشرونَ",
+              "عشرينَ",
+              "عشرَ",
+              "عشرةَ"
+            ],
+            "why": "العقد فاعل المعنى مبتدأ مؤخر مرفوع بالواو: في الصف عشرون طالبًا."
+          },
+          {
+            "q": "الصواب في «كرّمتُ ... طالبًا» عند العدد 20",
+            "o": [
+              "عشرينَ",
+              "عشرونَ",
+              "عشرَ",
+              "عشرةَ"
+            ],
+            "why": "ألفاظ العقود تنصب بالياء مثل جمع المذكر السالم."
+          },
+          {
+            "q": "ألفاظ العقود مثل ثلاثين وأربعين",
+            "o": [
+              "لا تختلف مع جنس المعدود",
+              "تخالف المذكر دائمًا",
+              "تطابق المؤنث دائمًا",
+              "تكون مبنية على الفتح دائمًا"
+            ],
+            "why": "ألفاظ العقود ثابتة للمذكر والمؤنث."
+          },
+          {
+            "q": "الصواب في «نجح ... طالبًا» عند العدد 21",
+            "o": [
+              "واحدٌ وعشرونَ",
+              "واحدةٌ وعشرونَ",
+              "واحدًا وعشرينَ",
+              "إحدى وعشرونَ"
+            ],
+            "why": "العدد المعطوف مرفوع، والواحد يطابق الطالب المذكر."
+          },
+          {
+            "q": "الصواب في «نجحت ... طالبةً» عند العدد 21",
+            "o": [
+              "إحدى وعشرونَ",
+              "واحدٌ وعشرونَ",
+              "واحدةً وعشرينَ",
+              "أحدٌ وعشرونَ"
+            ],
+            "why": "إحدى للمؤنث في العدد المعطوف، والعقد مرفوع بالواو."
+          },
+          {
+            "q": "الصواب في «رأيتُ ... طالبًا» عند العدد 23",
+            "o": [
+              "ثلاثةً وعشرينَ",
+              "ثلاثًا وعشرينَ",
+              "ثلاثةٌ وعشرونَ",
+              "ثلاثَ وعشرونَ"
+            ],
+            "why": "الآحاد من 3 إلى 9 تخالف المعدود، والمركب المعطوف منصوب هنا."
+          },
+          {
+            "q": "الصواب في «رأيتُ ... طالبةً» عند العدد 23",
+            "o": [
+              "ثلاثًا وعشرينَ",
+              "ثلاثةً وعشرينَ",
+              "ثلاثٌ وعشرونَ",
+              "ثلاثةٌ وعشرونَ"
+            ],
+            "why": "الآحاد تخالف المعدود المؤنث، والعدد كله في محل نصب."
+          },
+          {
+            "q": "المعدود بعد «مئة» يكون غالبًا",
+            "o": [
+              "مفردًا مجرورًا",
+              "جمعًا منصوبًا",
+              "مفردًا منصوبًا",
+              "جمعًا مرفوعًا"
+            ],
+            "why": "مئة تضاف إلى مفرد مجرور: مئةُ صفحةٍ."
+          },
+          {
+            "q": "الصواب في «اشتريتُ مئةَ ...»",
+            "o": [
+              "كتابٍ",
+              "كتابًا",
+              "كتبٍ",
+              "كتبًا"
+            ],
+            "why": "معدود المئة مفرد مجرور بالإضافة."
+          },
+          {
+            "q": "الصواب في «قرأتُ ألفَ ...»",
+            "o": [
+              "صفحةٍ",
+              "صفحةً",
+              "صفحاتٍ",
+              "صفحاتً"
+            ],
+            "why": "المعدود بعد ألف مفرد مجرور بالإضافة."
+          },
+          {
+            "q": "«بضعة» مع المعدود المذكر تعامل معاملة",
+            "o": [
+              "الأعداد من 3 إلى 9",
+              "العدد واحد",
+              "ألفاظ العقود",
+              "العدد اثنين"
+            ],
+            "why": "بضعة تخالف المعدود في التذكير والتأنيث."
+          },
+          {
+            "q": "الصواب في «قرأتُ ... كتبٍ» باستخدام بضعة",
+            "o": [
+              "بضعةَ",
+              "بضعَ",
+              "بضعتينِ",
+              "بضعونَ"
+            ],
+            "why": "كتاب مذكر، فيكون العدد بضعة."
+          },
+          {
+            "q": "الصواب في «قرأتُ ... صفحاتٍ» باستخدام بضعة",
+            "o": [
+              "بضعَ",
+              "بضعةَ",
+              "بضعتينِ",
+              "بضعونَ"
+            ],
+            "why": "صفحة مؤنثة، فيكون العدد بضع."
+          },
+          {
+            "q": "العدد «اثنا عشر» في حالة النصب يصبح",
+            "o": [
+              "اثني عشر",
+              "اثنا عشر",
+              "اثنتي عشرة",
+              "اثنتا عشرة"
+            ],
+            "why": "صدر اثني عشر يعرب إعراب المثنى."
+          },
+          {
+            "q": "الصواب في «جاء ... طالبًا» عند العدد 12",
+            "o": [
+              "اثنا عشرَ",
+              "اثني عشرَ",
+              "اثنتا عشرةَ",
+              "اثنتي عشرةَ"
+            ],
+            "why": "الجزء الأول مرفوع بالألف، والجزء الثاني مبني على الفتح."
+          },
+          {
+            "q": "الصواب في «رأيتُ ... طالبةً» عند العدد 12",
+            "o": [
+              "اثنتي عشرةَ",
+              "اثنتا عشرةَ",
+              "اثني عشرَ",
+              "اثنا عشرَ"
+            ],
+            "why": "صدر العدد منصوب بالياء ومؤنث المعدود."
+          },
+          {
+            "q": "أي التعبيرات التالية صحيح؟",
+            "o": [
+              "سبعةُ أقلامٍ",
+              "سبعُ أقلامٍ",
+              "سبعةُ قلمًا",
+              "سبعُ قلمٍ"
+            ],
+            "why": "مفرد الأقلام قلم مذكر، فيلزم العدد سبعة ومعدود جمع مجرور."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 5,
+    "sem": 1,
+    "title": "التعليم التقني بوابة المستقبل",
+    "lessons": [
+      {
+        "id": "u5l1",
+        "type": "q",
+        "title": "أنواع ما",
+        "summary": "<h3>دليل الدرس: من أنواع «ما»</h3><p><b>مرجع المنهج:</b> ص 110–113. شرح تعليمي أصلي يغطي أنواع «ما» المذكورة في الكتاب.</p><h3>1. تقسيم عام</h3><p>تأتي «ما» حرفًا في مواضع، واسمًا في مواضع أخرى. الحكم لا يتحدد بالشكل وحده، بل بالسياق والمعنى والعمل النحوي.</p><h3>2. أنواع «ما» الحرفية</h3><ul><li><b>مصدرية غير زمانية:</b> «سُررتُ بما اجتهدتَ» على معنى «باجتهادك»؛ تؤول مع الفعل بمصدر.</li><li><b>مصدرية ظرفية زمانية:</b> «أرافقُك ما دمتَ صادقًا»، أي مدة دوامك صادقًا.</li><li><b>نافية:</b> «ما حضرَ أحدٌ»؛ تنفي وقوع الفعل.</li><li><b>زائدة كافة:</b> «إنما الصدقُ نجاةٌ»؛ تكف إن عن العمل.</li><li><b>زائدة غير كافة:</b> «دونما خوفٍ»؛ تزاد بعد دون ولا تمنعها من عملها.</li></ul><h3>3. أنواع «ما» الاسمية</h3><ul><li><b>استفهامية:</b> «ما اسمُك؟»؛ للسؤال.</li><li><b>شرطية:</b> «ما تفعلْ من خيرٍ تجدْه»؛ تجزم فعلين.</li><li><b>تعجبية:</b> «ما أجملَ السماءَ!»؛ اسم في محل رفع مبتدأ.</li><li><b>موصولة:</b> «أحبُّ ما رسمتَه»؛ بمعنى الذي، والهاء عائد.</li><li><b>نكرة مبهمة:</b> «يومًا ما»، «مكانٍ ما»؛ تزيد النكرة إبهامًا.</li></ul><h3>4. حذف ألف «ما» الاستفهامية</h3><p>إذا سبقها حرف جر حذفت ألفها: <b>بِمَ؟ لِمَ؟ عَمَّ؟ مِمَّ؟ فِيمَ؟</b>. ولا نطبق هذا الحكم على «ما» الموصولة أو المصدرية: «أُعجبتُ بما صنعتَه».</p><h3>5. مقارنة في الضبط</h3><p>«ما أجملَ آثارَ الأردنِّ!» تعجب؛ أما «ما أجملُ آثارِ الأردنِّ؟» فاستفهام عن الشيء الأجمل. يغيّر الضبط المعنى والنوع.</p><h3>6. كيف تحل السؤال؟</h3><ul><li>هل تسأل الجملة عن شيء؟ إذن «ما» استفهامية.</li><li>هل هي بصيغة «ما أفعلَ» للتعجب؟ فهي تعجبية.</li><li>هل بمعنى «الذي» ومعها صلة؟ فهي موصولة.</li><li>هل تؤوّل مع الفعل بمصدر؟ فهي مصدرية، ويحدد السياق دلالتها الزمنية.</li><li>هل تجزم فعلين؟ فهي شرطية.</li><li>هل تنفي أو تكف حرفًا عن العمل أو تزيد إبهامًا؟ فحدد النوع بدقة.</li></ul><h3>7. أخطاء شائعة</h3><p>الخلط بين الموصولة والمصدرية عند غياب القرينة؛ نختار أمثلة واضحة في الاختبارات. وعدم حذف ألف «ما» الاستفهامية بعد حرف الجر. وعدّ «ما» في «يومًا ما» نافيةً.</p><h3>تدريب ذاتي</h3><p>اكتب جملة أصلية لكل نوع من الأنواع العشرة، ثم اشرح لماذا لا تصلح الأنواع الأخرى لها.</p>",
+        "questions": [
+          {
+            "q": "«ما» في «إنّما الأعمالُ بالنيات»:",
+            "o": [
+              "كافّة",
+              "نافية",
+              "موصولة",
+              "مصدرية"
+            ],
+            "why": "اتصلت بـ«إنّ» فكفّتها عن العمل، ولذلك جاء «الأعمالُ» مرفوعًا مبتدأً."
+          },
+          {
+            "q": "«ما» في «لا أفارقك ما دمتَ صادقًا»:",
+            "o": [
+              "مصدرية زمانية",
+              "نافية",
+              "شرطية",
+              "استفهامية"
+            ],
+            "why": "تُؤوَّل مع ما بعدها بمصدر يدل على الزمن: مدةَ دوامك صادقًا."
+          },
+          {
+            "q": "«ما» في «يسرّني ما تجتهدُ في دراستك»:",
+            "o": [
+              "مصدرية غير زمانية",
+              "موصولة",
+              "نافية",
+              "كافّة"
+            ],
+            "why": "تُؤوَّل مع الفعل بمصدر غير دال على الزمن: يسرّني اجتهادُك في دراستك."
+          },
+          {
+            "q": "«ما» في «ما ربحَ تاجرٌ غشّاش»:",
+            "o": [
+              "نافية",
+              "استفهامية",
+              "تعجبية",
+              "شرطية"
+            ],
+            "why": "نفت وقوع الربح، وهي حرف لا محل له."
+          },
+          {
+            "q": "«ما» في «ما هذا بشرًا»:",
+            "o": [
+              "نافية مشبهة بليس",
+              "نافية غير عاملة",
+              "استفهامية",
+              "موصولة"
+            ],
+            "why": "عملت «ما» عمل «ليس»: «هذا» اسمها في محل رفع، و«بشرًا» خبرها منصوب."
+          },
+          {
+            "q": "«ما» في «ما تفعلْ من خيرٍ تجدْه»:",
+            "o": [
+              "شرطية",
+              "موصولة",
+              "نافية",
+              "مصدرية"
+            ],
+            "why": "جزمت فعلين: «تفعلْ» فعل الشرط و«تجدْه» جوابه."
+          },
+          {
+            "q": "«ما» في «أعجبني ما قرأتُه من قصصٍ»:",
+            "o": [
+              "موصولة بمعنى الذي",
+              "مصدرية",
+              "نافية",
+              "استفهامية"
+            ],
+            "why": "«ما» بمعنى «الذي»، والهاء في «قرأته» عائد على الاسم الموصول، والمقصود القصص المقروءة؛ لذا فهي اسم موصول في محل رفع فاعل."
+          },
+          {
+            "q": "«ما» في «ما اسمُك؟»:",
+            "o": [
+              "استفهامية",
+              "نافية",
+              "تعجبية",
+              "موصولة"
+            ],
+            "why": "يُسأل بها عن الاسم، وهي اسم استفهام مبني في محل رفع مبتدأ."
+          },
+          {
+            "q": "«ما» في «ما أكرمَ العربَ!»:",
+            "o": [
+              "تعجبية",
+              "نافية",
+              "استفهامية",
+              "كافّة"
+            ],
+            "why": "أسلوب تعجب: ما + أفعلَ + الاسم المتعجَّب منه."
+          },
+          {
+            "q": "أيّ أنواع «ما» الآتية اسم وليس حرفًا؟",
+            "o": [
+              "الموصولة",
+              "الكافّة",
+              "النافية",
+              "المصدرية"
+            ],
+            "why": "الموصولة اسم له محل من الإعراب، أما الكافة والنافية والمصدرية فحروف."
+          },
+          {
+            "q": "«ما» في «ما أروعَ الصدقَ!»",
+            "o": [
+              "تعجبية",
+              "نافية",
+              "موصولة",
+              "شرطية"
+            ],
+            "why": "ما التعجبية في محل رفع مبتدأ."
+          },
+          {
+            "q": "«ما» في «ما حضرَ خالدٌ»",
+            "o": [
+              "نافية",
+              "شرطية",
+              "موصولة",
+              "مصدرية"
+            ],
+            "why": "نفت وقوع الحضور."
+          },
+          {
+            "q": "«ما» في «ما تفعلْ من خيرٍ تجدْه»",
+            "o": [
+              "شرطية",
+              "نافية",
+              "استفهامية",
+              "كافة"
+            ],
+            "why": "تجزم فعل الشرط وجوابه."
+          },
+          {
+            "q": "«ما» في «إنما العلمُ نورٌ»",
+            "o": [
+              "كافة",
+              "موصولة",
+              "نافية",
+              "تعجبية"
+            ],
+            "why": "تكف إن عن العمل."
+          },
+          {
+            "q": "«ما» في «ما هذا بشرًا»",
+            "o": [
+              "نافية تعمل عمل ليس",
+              "استفهامية",
+              "شرطية",
+              "موصولة"
+            ],
+            "why": "ترفع الاسم وتنصب الخبر في هذا التركيب."
+          },
+          {
+            "q": "«ما» في «ما دمتَ مجتهدًا فسأنجحَ معك»",
+            "o": [
+              "مصدرية زمانية",
+              "موصولة",
+              "تعجبية",
+              "شرطية"
+            ],
+            "why": "المعنى: مدة دوامك مجتهدًا."
+          },
+          {
+            "q": "«ما» في «ما اسمُك؟»",
+            "o": [
+              "استفهامية",
+              "نافية",
+              "شرطية",
+              "مصدرية"
+            ],
+            "why": "يُطلب بها معرفة الاسم."
+          },
+          {
+            "q": "«ما» في «أحببتُ ما رسمتَه»",
+            "o": [
+              "موصولة",
+              "شرطية",
+              "نافية",
+              "كافة"
+            ],
+            "why": "الهاء عائد على ما الموصولة؛ أي الذي رسمته."
+          },
+          {
+            "q": "«ما» في «سُررتُ بما اجتهدتَ في عملك» على تأويل «باجتهادك»",
+            "o": [
+              "مصدرية غير زمانية",
+              "موصولة",
+              "شرطية",
+              "نافية"
+            ],
+            "why": "التأويل المصدري منصوص عليه في السؤال."
+          },
+          {
+            "q": "«ما» في «مهما تفعلْ من خيرٍ يُجزَ به»",
+            "o": [
+              "جزء من اسم الشرط مهما",
+              "نافية مستقلة",
+              "تعجبية مستقلة",
+              "كافة مستقلة"
+            ],
+            "why": "مهما اسم شرط واحد، ولا تُعرب ما فيه كلمة مستقلة."
+          },
+          {
+            "q": "ما نوع «ما» في «دونما ترددٍ»؟",
+            "o": [
+              "زائدة غير كافة",
+              "زائدة كافة",
+              "شرطية",
+              "موصولة"
+            ],
+            "why": "تأتي ما زائدة بعد دون دون أن تكفها عن عملها."
+          },
+          {
+            "q": "«ما» في «يومًا ما»",
+            "o": [
+              "نكرة مبهمة",
+              "استفهامية",
+              "نافية",
+              "مصدرية"
+            ],
+            "why": "ما بعد النكرة تزيدها إبهامًا."
+          },
+          {
+            "q": "«ما» في «بقعةٍ ما»",
+            "o": [
+              "نكرة مبهمة",
+              "موصولة",
+              "تعجبية",
+              "شرطية"
+            ],
+            "why": "تأتي بعد النكرة فتزيدها إبهامًا."
+          },
+          {
+            "q": "ما الكتابة الصحيحة للاستفهام بعد «بـ»؟",
+            "o": [
+              "بِمَ؟",
+              "بِما؟",
+              "بما!",
+              "بمْ؟"
+            ],
+            "why": "تحذف ألف ما الاستفهامية إذا دخل عليها حرف الجر."
+          },
+          {
+            "q": "ما الكتابة الصحيحة للاستفهام بعد «لـ»؟",
+            "o": [
+              "لِمَ؟",
+              "لِما؟",
+              "لمْ؟",
+              "لما!"
+            ],
+            "why": "تحذف ألف ما الاستفهامية بعد لام الجر."
+          },
+          {
+            "q": "ما الكتابة الصحيحة للاستفهام بعد «عن»؟",
+            "o": [
+              "عَمَّ؟",
+              "عن ما؟",
+              "عمْ؟",
+              "عما!"
+            ],
+            "why": "تحذف ألف ما الاستفهامية وتدغم النون في الميم."
+          },
+          {
+            "q": "في «ما أحسنَ العملَ!» ما إعراب «ما»؟",
+            "o": [
+              "اسم تعجب مبني في محل رفع مبتدأ",
+              "حرف نفي",
+              "حرف جر",
+              "اسم شرط"
+            ],
+            "why": "ما التعجبية في صيغة ما أفعله اسم في محل رفع مبتدأ."
+          },
+          {
+            "q": "في «ما أحسنُ العملِ؟» ما نوع «ما» بحسب الضبط وعلامة السؤال؟",
+            "o": [
+              "استفهامية",
+              "تعجبية",
+              "نافية",
+              "كافة"
+            ],
+            "why": "السؤال عن الشيء الأحسن، و«أحسنُ» اسم تفضيل."
+          },
+          {
+            "q": "في «أُقدّر ما تنجزُه» ما نوع «ما»؟",
+            "o": [
+              "موصولة",
+              "مصدرية زمانية",
+              "زائدة كافة",
+              "نافية"
+            ],
+            "why": "الهاء عائد على ما، والمعنى: الذي تنجزه."
+          },
+          {
+            "q": "أي جملة تحوي «ما» مصدرية زمانية؟",
+            "o": [
+              "سأنتظرُك ما دمتَ هنا",
+              "ما اسمُك؟",
+              "ما أجملَ الربيعَ!",
+              "ما جاء أحدٌ"
+            ],
+            "why": "ما دمت هنا بمعنى مدة دوامك هنا."
+          }
+        ]
+      }
+    ]
+  }
+];
+
+/* =================== الإعدادات العامة =================== */
+const TYPE = { q:{n:"قواعد",c:"tq",e:"📘"}, b:{n:"بلاغة",c:"tb",e:"🎨"}, a:{n:"عروض",c:"ta",e:"🎵"} };
+const LETTERS = ["أ","ب","ج","د"];
+const LEVELS = ["مبتدئ","متعلّم","مجتهد","متمكّن","متقن","متفوّق","خبير","أستاذ اللغة"];
+const XP_PER_LEVEL = 250;
+const WA = "962779221235";
+const KEY = "abni_lughati_sem1_2026_comprehensive_v3";
+const SKILLS = [{"id": "skill1", "unit": 1, "title": "من القيم الإنسانية في القرآن الكريم", "topic": "العدل والتسامح", "passage": "إنّ العدلَ قيمةٌ تبني الثقة بين الناس، وهو لا يقتصر على الحكم في الخصومات، بل يظهر في الكلمة التي نقولها، وفي الطريقة التي نتعامل بها مع المختلفين معنا. وقد يتطلب العدل من الإنسان أن يراجع موقفه إذا اكتشف أنه أخطأ، فلا يجعل محبته لأحد سببًا لمحاباته، ولا يجعل خلافه مع آخر مبررًا لظلمه. والتسامح لا يعني التنازل عن الحقوق، بل يعني معالجة الخلاف دون إساءة، والسعي إلى الإصلاح بالرفق والحكمة. والمجتمع الذي ينصف أفراده بعضهم بعضًا أقرب إلى التعاون والاستقرار.", "writing": "تقرير بحثي", "task": "اكتب تقريرًا بحثيًا قصيرًا عن قيمة العدل أو التسامح. حدّد سؤال البحث، واجمع معلومات من مصدرين موثوقين، واكتب مقدمة وعرضًا ونتائج، واذكر المصدرين.", "speaking": "تحدّث ثلاث دقائق عن موقف يظهر فيه العدل، مع مقدمة وفكرة رئيسية ومثال وخاتمة.", "questions": [{"q": "ما القيمة المحورية في النص؟", "o": ["العدل في التعامل مع الآخرين", "السرعة في الحكم", "المجاملة في كل موقف", "تجنب الحوار"], "why": "يركز النص على الإنصاف ومراجعة الموقف."}, {"q": "العدل في النص لا يقتصر على", "o": ["الحكم في الخصومات", "العمل الفردي", "المؤسسات وحدها", "اللغة الرسمية"], "why": "ينص على اتساع مفهوم العدل إلى الكلام والتعامل."}, {"q": "متى يراجع الإنسان موقفه وفق النص؟", "o": ["إذا اكتشف أنه أخطأ", "إذا اختلف معه صديق", "كلما سمع إشاعة", "عند انتهاء اليوم"], "why": "المراجعة عند ظهور الخطأ دليل إنصاف."}, {"q": "ما العلاقة بين التسامح والحقوق في النص؟", "o": ["التسامح لا يعني التنازل عنها", "التسامح يلغي الحقوق", "الحقوق تمنع الإصلاح", "لا علاقة بينهما"], "why": "يفصل النص بين التسامح والتنازل عن الحقوق."}, {"q": "ما أثر العدل في المجتمع؟", "o": ["تعزيز التعاون والاستقرار", "زيادة الخصومات", "إضعاف الثقة", "منع الاختلاف"], "why": "يربط النص الإنصاف بالتعاون والاستقرار."}, {"q": "أي سلوك يناقض العدل؟", "o": ["محاباة القريب رغم خطئه", "تصحيح الخطأ", "احترام المخالف", "الرفق في الإصلاح"], "why": "المحاباة مخالفة لمبدأ الإنصاف."}, {"q": "ما وظيفة «بل» في «بل يظهر في الكلمة»؟", "o": ["الإضراب الانتقالي والتوسيع", "الاستفهام", "النفي", "الشرط"], "why": "انتقل النص من نطاق ضيق إلى معنى أوسع."}, {"q": "ما نوع النص الغالب؟", "o": ["تفسيري إقناعي", "إعلان تجاري", "سرد خيالي محض", "وصف جغرافي"], "why": "يشرح قيمة ويبرر أثرها."}, {"q": "أي عنوان فرعي مناسب؟", "o": ["الإنصاف أساس الثقة", "السياحة المدرسية", "وسائل النقل", "تاريخ المدن"], "why": "العنوان يلخص أثر العدل."}, {"q": "ما الاستنتاج المدعوم؟", "o": ["الاختلاف لا يبرر الظلم", "التسامح يعني السكوت دائمًا", "المحبة تعني المحاباة", "لا حاجة إلى الإصلاح"], "why": "يفرق النص بين الاختلاف والظلم."}]}, {"id": "skill2", "unit": 2, "title": "في حب الوطن", "topic": "معالم الوطن وذاكرته", "passage": "ليست المعالم الوطنية حجارةً صامتة؛ فهي شواهد على تاريخ المكان وحياة أهله. حين يزور الطالب موقعًا أثريًا أو معلمًا طبيعيًا، يستطيع أن يقرأ في تفاصيله آثار العمل الإنساني وعلاقة الإنسان ببيئته. والزيارة الواعية لا تكتمل بالتقاط الصور وحده، بل تحتاج إلى معرفة تاريخ الموقع، والمحافظة على نظافته، واحترام التعليمات التي تحميه. إن وصف المعلم وصفًا دقيقًا يجعل القارئ يتخيل شكله وموقعه وأهميته، كما أن الاستناد إلى المعلومات الصحيحة يميّز الوصف الجيد من الانطباعات العابرة.", "writing": "مقالة تحليلية", "task": "اكتب مقالة تحليلية عن أثر المحافظة على المعالم الوطنية في تعزيز الانتماء. قدّم أطروحة واضحة وحجتين وأمثلة وخاتمة.", "speaking": "صف معلمًا وطنيًا تعرفه في دقيقتين: الموقع، والمظهر، والأهمية، وواجب الزائر.", "questions": [{"q": "ما الفكرة الرئيسة؟", "o": ["أهمية المعالم الوطنية والمحافظة عليها", "طرق تصوير الطبيعة", "أسعار التذاكر", "تاريخ وسائل النقل"], "why": "يتناول المعالم بوصفها ذاكرة ومسؤولية."}, {"q": "بم شبّه الكاتب المعالم؟", "o": ["شواهد على التاريخ", "ألعاب للأطفال", "كتب مدرسية", "طرق سريعة"], "why": "يصفها بأنها شواهد على تاريخ المكان."}, {"q": "ما الذي لا يكفي وحده في الزيارة؟", "o": ["التقاط الصور", "احترام التعليمات", "معرفة التاريخ", "الحفاظ على النظافة"], "why": "يشير النص إلى أن الصور وحدها لا تكفي."}, {"q": "ما الذي يميز الوصف الجيد؟", "o": ["الدقة والمعلومات الصحيحة", "المبالغة", "كثرة الصفات دون دليل", "الاختصار الشديد"], "why": "يربط الوصف بالدقة والمعلومة."}, {"q": "ما واجب الزائر؟", "o": ["احترام التعليمات والنظافة", "العبث بالآثار", "ترك المخلفات", "تجاهل تاريخ الموقع"], "why": "المحافظة على المعالم سلوك مسؤول."}, {"q": "ما العلاقة بين المعلم والهوية؟", "o": ["يمثل جانبًا من ذاكرة المكان", "يلغي تاريخ الناس", "يمنع التعلم", "لا علاقة له بالبيئة"], "why": "المعلم شاهد على التاريخ وحياة الأهالي."}, {"q": "ما المقصود بـ«الانطباعات العابرة»؟", "o": ["أحكام سريعة غير مدعومة", "حقائق موثقة", "تقارير بحثية", "سجلات رسمية"], "why": "تقابل المعلومات الصحيحة في النص."}, {"q": "ما نوع التفاصيل المفيدة للوصف؟", "o": ["الشكل والموقع والأهمية", "الأسعار وحدها", "اسم المصور", "عدد الزوار فقط"], "why": "تساعد التفاصيل القارئ على تصور المعلم."}, {"q": "أي سلوك يدل على زيارة واعية؟", "o": ["قراءة تاريخ الموقع قبل زيارته", "الاكتفاء بالصور", "إهمال التعليمات", "ترك المكان متسخًا"], "why": "الوعي يجمع المعرفة والمسؤولية."}, {"q": "ما الهدف من النص؟", "o": ["تعزيز تقدير المعالم وصونها", "الترويج لمنتج", "عرض حوار درامي", "تعليم الحساب"], "why": "الهدف توعوي وصفي."}]}, {"id": "skill3", "unit": 3, "title": "أمراض العصر", "topic": "الوقاية مسؤولية مشتركة", "passage": "أصبحت المعلومات الصحية تنتقل بسرعة كبيرة، لكن سرعة انتشارها لا تعني صحتها. فقد يتداول الناس نصيحةً دون معرفة مصدرها، ثم يبنون عليها قرارات تؤثر في حياتهم. ومن هنا تبرز أهمية التحقق من المعلومات والتمييز بين الرأي والدليل. كما تسهم العادات اليومية، مثل الحركة المنتظمة والنوم الكافي والتوازن في الغذاء، في العناية بالصحة العامة. والوقاية ليست مسؤولية الفرد وحده؛ إذ تحتاج إلى تعاون الأسرة والمدرسة والمؤسسات، وإلى لغة واضحة تشرح السلوك الصحيح دون تخويف أو مبالغة.", "writing": "تلخيص مقالة علمية", "task": "اقرأ مقالة علمية موثوقة ثم لخّص فكرتها الرئيسة وأهم ثلاث نتائج بلغتك، مع ذكر المصدر ودون إضافة رأيك إلى التلخيص.", "speaking": "شارك في حوار قصير: كيف نميّز الخبر الصحي الموثوق من الإشاعة؟ احترم أدوار المتحدثين.", "questions": [{"q": "ما الفكرة الرئيسة؟", "o": ["التحقق من المعلومات والوقاية الصحية", "إلغاء النشاط البدني", "الاعتماد على الشائعات", "رفض الحوار"], "why": "يعالج التحقق والوقاية."}, {"q": "هل سرعة انتشار المعلومة دليل صحتها؟", "o": ["لا", "نعم دائمًا", "في المدرسة فقط", "إذا أعادها الأصدقاء"], "why": "يفرق النص بين الانتشار والصحة."}, {"q": "ما المقصود بالدليل؟", "o": ["ما يسند الادعاء بمعلومات موثوقة", "الانطباع الشخصي وحده", "عنوان مثير", "رأي مجهول"], "why": "الدليل يبرر الحكم لا مجرد رأي."}, {"q": "أي عادة وردت في النص؟", "o": ["النوم الكافي", "السهر الطويل", "إهمال الحركة", "تجاوز الوجبات"], "why": "ذكر النوم والحركة والتوازن."}, {"q": "على من تقع مسؤولية الوقاية؟", "o": ["الفرد والمؤسسات معًا", "الفرد فقط", "المدرسة فقط", "الأسرة فقط"], "why": "يؤكد النص التعاون بين الجهات."}, {"q": "ما أثر النصيحة غير الموثقة؟", "o": ["قد تؤثر سلبًا في القرارات", "تكون صحيحة دائمًا", "لا تؤثر مطلقًا", "تغني عن المصادر"], "why": "يشير إلى خطر تداول النصائح دون مصدر."}, {"q": "أي أسلوب لغوي يفضله النص؟", "o": ["الوضوح دون تهويل", "التخويف والمبالغة", "الغموض", "التعميم المطلق"], "why": "يوصي بلغة واضحة بلا تخويف."}, {"q": "ما الفرق بين الرأي والدليل؟", "o": ["الرأي موقف والدليل يسنده", "هما شيء واحد", "الدليل انطباع", "الرأي حقيقة قطعية"], "why": "تمييزهما أساس التحقق."}, {"q": "ما الغرض من النص؟", "o": ["التوعية النقدية", "بيع علاج", "رواية قصة خيالية", "وصف رحلة"], "why": "نص توعوي."}, {"q": "ما السلوك الأنسب قبل نشر معلومة صحية؟", "o": ["التحقق من مصدرها", "إعادة نشرها فورًا", "حذف اسم الكاتب فقط", "تغيير عنوانها"], "why": "التحقق يمنع انتشار الإشاعات."}]}, {"id": "skill4", "unit": 4, "title": "الإعلام الرقمي", "topic": "الإعلام الرقمي واللغة", "passage": "أتاح الإعلام الرقمي لكل فرد تقريبًا فرصة نشر الأفكار والتعليق على الأحداث، غير أن سهولة النشر تقابلها مسؤولية التحقق من الدقة واحترام الآخرين. فالخبر الذي يفتقر إلى مصدر موثوق قد ينتشر بسرعة، ثم يصعب تصحيح أثره. وتؤثر اللغة المستخدمة في طريقة فهم الجمهور للمحتوى؛ فالعنوان المبالغ فيه قد يثير الانفعال، بينما يساعد العنوان الدقيق على بناء الثقة. وللعربية في الفضاء الرقمي فرصة كبيرة إذا اعتنى المستخدمون بسلامة التعبير ووضوح المصطلحات. ومن مهارات القارئ الواعي أن يميز الخبر من الرأي، وأن يقارن بين المصادر قبل إعادة النشر.", "writing": "تقرير صحفي", "task": "اكتب تقريرًا صحفيًا عن مبادرة مدرسية في الاستخدام المسؤول للإعلام الرقمي. أجب عن: من؟ ماذا؟ متى؟ أين؟ لماذا؟ وكيف؟", "speaking": "قدّم مناظرة مصغرة حول أثر الإعلام الرقمي في اللغة العربية، مع حجة وردّ محترم على رأي مخالف.", "questions": [{"q": "ما القضية الرئيسة؟", "o": ["مسؤولية النشر الرقمي وسلامة اللغة", "إلغاء الكتابة", "الرحلات", "الموسيقى"], "why": "يربط النص بين النشر والدقة."}, {"q": "ما الذي يقابل سهولة النشر؟", "o": ["مسؤولية التحقق والاحترام", "حرية الإساءة", "الاستغناء عن المصادر", "إلغاء النقاش"], "why": "النشر مسؤولية."}, {"q": "لماذا يعد الخبر بلا مصدر خطرًا؟", "o": ["قد ينتشر ويصعب تصحيح أثره", "لأنه قصير", "لأنه مكتوب بالعربية", "لأنه بلا صورة"], "why": "الانتشار السريع يزيد أثر الخطأ."}, {"q": "ما أثر العنوان المبالغ فيه؟", "o": ["إثارة الانفعال", "ضمان الدقة", "منع التحيز", "توثيق الخبر"], "why": "يشير النص إلى أثر المبالغة."}, {"q": "كيف تُبنى الثقة مع الجمهور؟", "o": ["بعنوان دقيق ومعلومات موثوقة", "بالمبالغة", "بالإخفاء", "بالسخرية"], "why": "الدقة تقوي الثقة."}, {"q": "ما مهارة القارئ الواعي؟", "o": ["التمييز بين الخبر والرأي", "إعادة نشر كل شيء", "الثقة بأول مصدر", "تجاهل الأدلة"], "why": "يدعو النص إلى التمييز والمقارنة."}, {"q": "كيف تُخدم العربية رقميًا؟", "o": ["بسلامة التعبير ووضوح المصطلحات", "بإهمال الضبط", "بالعناوين المضللة", "بتجاهل القارئ"], "why": "النص يركز على سلامة التعبير."}, {"q": "أي عبارة تمثل رأيًا لا خبرًا موثقًا؟", "o": ["أرى أن هذا المقال أجمل المقالات", "نُشر المقال يوم الثلاثاء", "بلغ عدد الصفحات عشرًا", "أُقيمت الندوة في المدرسة"], "why": "الأفضلية حكم شخصي."}, {"q": "ما الإجراء المناسب قبل إعادة النشر؟", "o": ["مقارنة المصادر", "الاكتفاء بالعنوان", "إضافة رموز", "إزالة التاريخ"], "why": "التحقق يسبق النشر."}, {"q": "ما نمط النص؟", "o": ["تفسيري توعوي", "وصفة طعام", "حكاية شعبية", "مسرحية"], "why": "يشرح المسؤولية ويقترح سلوكًا."}]}, {"id": "skill5", "unit": 5, "title": "من الأدب الواقعي", "topic": "الأدب مرآة للحياة", "passage": "يعرض الأدب الواقعي شخصياتٍ تواجه مشكلات قريبة من حياة الناس، ويهتم بتفاصيل المكان والعمل والعلاقات الاجتماعية. وقد يختار الكاتب موقفًا يوميًا بسيطًا ليكشف من خلاله قضية أوسع، مثل الفقر أو التضامن أو أثر الظروف في خيارات الإنسان. ولا يكتفي القارئ الجيد بتتبع الأحداث؛ بل يسأل عن دوافع الشخصيات، ويلاحظ أثر الحوار والوصف في بناء المعنى، ويميز ما يقوله الراوي مما يستنتجه هو. وتختلف الاستجابة للنص الأدبي من قارئ إلى آخر، لكن الرأي المقنع يحتاج إلى شاهد من النص وتحليل يربطه بالفكرة.", "writing": "استجابة ذاتية", "task": "اكتب استجابة ذاتية لقصة قصيرة قرأتها: ما الموقف الذي أثّر فيك؟ لماذا؟ ادعم رأيك بتفصيل محدد من النص، ثم اختم بتأمل شخصي.", "speaking": "أجرِ مقابلة قصيرة مع قارئ عن شخصية أدبية أثرت فيه؛ اطرح أسئلة مفتوحة وأنصت إلى الإجابات.", "questions": [{"q": "ما الفكرة الرئيسة؟", "o": ["خصائص الأدب الواقعي وقراءته", "قواعد الحساب", "الصحافة الرقمية", "الرياضة"], "why": "النص يشرح الواقعية والقراءة."}, {"q": "بم يهتم الأدب الواقعي؟", "o": ["حياة الناس وتفاصيلها", "العوالم الخيالية فقط", "الألغاز الرياضية", "الإعلانات"], "why": "يتناول الحياة الاجتماعية."}, {"q": "ما وظيفة الموقف اليومي في النص الواقعي؟", "o": ["الكشف عن قضية أوسع", "ملء الصفحات فقط", "منع التحليل", "إلغاء الشخصية"], "why": "قد يكشف قضية اجتماعية."}, {"q": "ما الذي يسأل عنه القارئ الجيد؟", "o": ["دوافع الشخصيات", "عدد حروف النص فقط", "سعر الكتاب", "لون الغلاف"], "why": "تحليل الدوافع أساس القراءة."}, {"q": "ما دور الحوار والوصف؟", "o": ["بناء المعنى", "إلغاء الأحداث", "تحديد السعر", "منع التأويل"], "why": "يسهمان في تشكيل الدلالة."}, {"q": "ما الفرق بين الراوي والقارئ؟", "o": ["الراوي يقدم أحداثًا والقارئ يستنتج", "هما دائمًا شخص واحد", "لا دور للقارئ", "كل قول حقيقة"], "why": "يدعو النص إلى التمييز بين المعطى والاستنتاج."}, {"q": "ما الذي يجعل الرأي الأدبي مقنعًا؟", "o": ["شاهد من النص وتحليل", "الانطباع وحده", "تكرار رأي الآخرين", "تجنب الأمثلة"], "why": "الدليل والتحليل يقويان الاستجابة."}, {"q": "هل تتطابق استجابات القراء؟", "o": ["قد تختلف", "تتطابق دائمًا", "لا توجد استجابات", "لا يجوز الاختلاف"], "why": "يشير النص إلى اختلاف القراء."}, {"q": "أي قضية من قضايا الواقعية وردت؟", "o": ["التضامن", "علم الفلك", "الرياضيات", "البرمجة"], "why": "ورد التضامن ضمن القضايا."}, {"q": "ما الغرض من النص؟", "o": ["شرح طريقة قراءة الأدب الواقعي", "إعلان مسابقة", "عرض وصفة", "تعليم النحو فقط"], "why": "النص تفسيري تعليمي."}]}];
+const LESSONS = []; UNITS.forEach(u => u.lessons.forEach(l => { l.unit = u; LESSONS.push(l); }));
+
+const ACH = [
+  {id:"first",  e:"🌱", n:"أول درس",       t:s => Object.keys(s.stats).length >= 1},
+  {id:"five",   e:"📗", n:"5 دروس",         t:s => Object.keys(s.stats).length >= 5},
+  {id:"all",    e:"🏆", n:"كل الدروس",      t:s => Object.keys(s.stats).length >= LESSONS.length},
+  {id:"perfect",e:"💯", n:"علامة كاملة",    t:s => Object.values(s.stats).some(x => x.best === 100)},
+  {id:"c100",   e:"🎯", n:"100 إجابة صحيحة", t:s => s.correct >= 100},
+  {id:"st3",    e:"🔥", n:"3 أيام متتالية", t:s => s.streak.best >= 3},
+  {id:"st7",    e:"⚡", n:"أسبوع كامل",     t:s => s.streak.best >= 7},
+  {id:"exam90", e:"🎓", n:"امتحان +90%",    t:s => s.examBest >= 90}
+];
+
+/* =================== الحفظ =================== */
+const DEF = { attempts:{}, readLessons:{}, drafts:{}, skillsDone:{}, skillStats:{}, name:"", xp:0, stats:{}, mistakes:[], fav:[], streak:{last:"",count:0,best:0}, daily:"", solved:0, correct:0,
+              ach:[], examBest:0, last:null, set:{dark:false,font:1,sound:true} };
+let S;
+try { S = Object.assign({}, DEF, JSON.parse(localStorage.getItem(KEY)) || {}); } catch(e){ S = {...DEF}; }
+S.attempts = S.attempts || {}; S.readLessons = S.readLessons || {}; S.drafts = S.drafts || {}; S.skillsDone = S.skillsDone || {}; S.skillStats = S.skillStats || {}; S.set = Object.assign({}, DEF.set, S.set || {}); S.streak = Object.assign({}, DEF.streak, S.streak || {});
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* =================== أدوات =================== */
+const $ = id => document.getElementById(id);
+const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const dstr = d => d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+const today = () => dstr(new Date());
+const yesterday = () => { const d = new Date(); d.setDate(d.getDate()-1); return dstr(d); };
+const lessonById = id => LESSONS.find(l => l.id === id);
+function allQ(filter){
+  const out = [];
+  LESSONS.forEach(l => { if(filter && !filter(l)) return;
+    l.questions.forEach((q,i) => out.push({...q, key:l.id+"_"+i, lid:l.id, lesson:l.title})); });
+  if(!filter) SKILLS.forEach(k=>k.questions.forEach((q,i)=>out.push({...q,key:k.id+"_"+i,lid:k.id,lesson:"فهم المقروء: "+k.topic})));
+  return out;
+}
+const qByKey = k => allQ().find(q => q.key === k);
+const level = () => Math.floor(S.xp / XP_PER_LEVEL);
+const levelName = () => LEVELS[Math.min(level(), LEVELS.length-1)];
+function progress(){
+  const sum = LESSONS.reduce((a,l) => a + (S.stats[l.id] ? S.stats[l.id].best : 0), 0);
+  const skillSum = SKILLS.reduce((a,k)=>a+(S.skillStats[k.id]?.best||0),0);
+  return Math.round((sum+skillSum)/(LESSONS.length+SKILLS.length));
+}
+const scoreCls = v => v >= 80 ? "g" : v >= 50 ? "m" : "l";
+const greet = () => { const h = new Date().getHours(); return h < 12 ? "صباح الخير ☀️" : h < 18 ? "مساء الخير 🌤️" : "مساء النور 🌙"; };
+
+function toast(t){ const el=$("toast"); el.innerHTML=t; el.classList.add("show"); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove("show"),2600); }
+function confetti(){
+  const c=document.createElement("div"); c.className="confetti";
+  const cols=["#3b30c9","#6d3df0","#ffb020","#12b886","#f0567a","#0ea5a4"];
+  for(let i=0;i<70;i++){ const p=document.createElement("i");
+    p.style.left=Math.random()*100+"%"; p.style.background=cols[i%cols.length];
+    p.style.animationDuration=(1.8+Math.random()*1.8)+"s"; p.style.animationDelay=Math.random()*.5+"s"; c.appendChild(p); }
+  document.body.appendChild(c); setTimeout(()=>c.remove(),4200);
+}
+let AC;
+function beep(ok){
+  if(!S.set.sound) return;
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator(), g=AC.createGain(); o.connect(g); g.connect(AC.destination);
+    o.type="sine"; const t=AC.currentTime;
+    if(ok){ o.frequency.setValueAtTime(660,t); o.frequency.setValueAtTime(880,t+.09); }
+    else { o.frequency.setValueAtTime(220,t); o.frequency.setValueAtTime(170,t+.12); }
+    g.gain.setValueAtTime(.12,t); g.gain.exponentialRampToValueAtTime(.001,t+.28); o.start(t); o.stop(t+.3);
+  }catch(e){}
+  if(!ok && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
+}
+function confirmBox(title, text, yes, onYes){
+  $("modalBox").innerHTML = `<h3>${title}</h3><p>${text}</p><div class="btns">
+    <button style="background:var(--card2)" onclick="closeModal()">إلغاء</button>
+    <button style="background:var(--bad);color:#fff" id="mYes">${yes}</button></div>`;
+  $("modal").classList.add("show"); $("mYes").onclick = () => { closeModal(); onYes(); };
+}
+function closeModal(){ $("modal").classList.remove("show"); }
+
+/* =================== التنقل =================== */
+const MAIN = ["home","lessons","skills","mastery","examSetup","stats","settings"];
+const TITLES = {home:"أبني لغتي",lessons:"القواعد",skills:"مهارات اللغة",mastery:"مركز الإتقان",examSetup:"امتحان تجريبي",stats:"تقدّمي",settings:"الإعدادات"};
+let stack = [];
+function show(id, title){
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  $(id).classList.add("active"); $("title").textContent = title;
+  const main = MAIN.includes(id);
+  $("app").classList.toggle("nonav", !main);
+  $("backBtn").style.display = main ? "none" : "flex";
+  document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("on", b.dataset.t === id));
+  window.scrollTo(0,0);
+}
+function tab(id){ stopTimer(); stack = []; RENDER[id](); show(id, TITLES[id]); }
+function push(id, title){
+  const cur = document.querySelector(".screen.active");
+  if(cur) stack.push({id:cur.id, title:$("title").textContent});
+  show(id, title);
+}
+function goBack(){
+  if(QZ.active && !QZ.done){
+    confirmBox("الخروج من الأسئلة؟","لن يُحفظ تقدّمك في هذه المحاولة.","خروج",()=>{ QZ.active=false; stopTimer(); goBack(); });
+    return;
+  }
+  stopTimer();
+  let p = stack.pop();
+  while(p && (p.id==="quiz" || p.id==="result")) p = stack.pop();
+  if(!p){ tab("home"); return; }
+  if(RENDER[p.id]) RENDER[p.id]();
+  if(p.id==="lesson" && CUR) openLesson(CUR.id, true);
+  if(p.id==="skillDetail" && CURRENT_SKILL) openSkill(CURRENT_SKILL.id,true);
+  show(p.id, p.title);
+}
+
+/* =================== الرئيسية =================== */
+function renderHome(){
+  const pr = progress(), lv = level(), inLv = S.xp % XP_PER_LEVEL;
+  const doneDaily = S.daily === today();
+  const last = S.last && lessonById(S.last);
+  const next = LESSONS.find(l => !S.stats[l.id]) ||
+               LESSONS.slice().sort((a,b) => S.stats[a.id].best - S.stats[b.id].best)[0];
+  const cont = last || next;
+  const nm = S.mistakes.length, nf = S.fav.length;
+  $("home").innerHTML = `
+    <div class="hero">
+      <div class="hi">${greet()}</div>
+      <div class="nm">${S.name || "يا بطل"} 👋</div>
+      <div class="row">
+        <div class="ring" style="--v:${pr}"><i><b>${pr}%</b><small>إنجازك</small></i></div>
+        <div class="lvl">
+          <div class="t"><b>⭐ ${levelName()}</b><span>المستوى ${lv+1}</span></div>
+          <div class="xpbar"><i style="width:${inLv/XP_PER_LEVEL*100}%"></i></div>
+          <div class="t" style="margin-top:6px;opacity:.85"><span>${S.xp} نقطة</span><span>${XP_PER_LEVEL-inLv} للمستوى التالي</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">🔥 ${S.streak.last===today()||S.streak.last===yesterday() ? S.streak.count : 0} يوم متتالي</span>
+        <span class="chip">✅ ${S.correct} إجابة صحيحة</span>
+        <span class="chip">📚 ${Object.keys(S.stats).length}/${LESSONS.length} قواعد</span><span class="chip">📖 ${Object.keys(S.skillStats).length}/${SKILLS.length} فهم مقروء</span>
+      </div>
+    </div>
+
+    <div class="daily ${doneDaily?"done":""}" onclick="startDaily()">
+      <div class="ic">${doneDaily?"🏅":"🎯"}</div>
+      <div><b>تحدّي اليوم</b><span>${doneDaily?"أنجزت تحدّي اليوم، عُد غدًا!":"5 أسئلة سريعة تحافظ على سلسلتك"}</span></div>
+      <span class="go">${doneDaily?"أعِده":"ابدأ"}</span>
+    </div>
+
+    ${cont ? `<div class="sect"><h2>${last?"تابع من حيث توقفت":"الدرس المقترح لك"}</h2></div>
+    <div class="card cont" onclick="openLesson('${cont.id}')">
+      <div class="ic tag ${TYPE[cont.type].c}" style="padding:0">${TYPE[cont.type].e}</div>
+      <div class="tx"><small>الوحدة ${cont.unit.n} • ${TYPE[cont.type].n}</small><b>${cont.title}</b></div>
+      <span class="arrow">‹</span>
+    </div>` : ""}
+
+    <div class="sect"><h2>ماذا تريد اليوم؟</h2></div>
+    <div class="grid">
+      <div class="tile" onclick="tab('lessons')"><div class="ic i2">📚</div><b>القواعد</b><span>شرح وتدريب</span></div>
+      <div class="tile" onclick="tab('skills')"><div class="ic i4">📖</div><b>المهارات</b><span>قراءة وكتابة وتحدث واستماع</span></div>
+      <div class="tile" onclick="tab('examSetup')"><div class="ic i1">⏱️</div><b>امتحان تجريبي</b><span>كأنك في القاعة</span></div>
+      <div class="tile" onclick="startMistakes()">${nm?`<span class="badge">${nm}</span>`:""}<div class="ic i3">📝</div><b>أخطائي</b><span>صحّح ما أخطأت فيه</span></div>
+      <div class="tile" onclick="startFav()">${nf?`<span class="badge" style="background:var(--acc)">${nf}</span>`:""}<div class="ic i4">⭐</div><b>المفضلة</b><span>أسئلة حفظتها</span></div>
+    </div>`;
+}
+
+/* =================== الدروس =================== */
+let SEM = 0, QRY = "";
+function renderLessons(){
+  $("lessons").innerHTML = `
+    <div class="search"><span>🔍</span><input id="sq" placeholder="ابحث عن درس... (مثال: التشبيه)" value="${QRY}" oninput="QRY=this.value;drawUnits()"></div>
+    <div class="seg">
+      <button class="${SEM===0?"on":""}" onclick="SEM=0;renderLessons()">الكل</button>
+      <button class="${SEM===1?"on":""}" onclick="SEM=1;renderLessons()">الفصل الأول</button>
+
+    </div>
+    <div id="unitList"></div>`;
+  drawUnits();
+}
+function drawUnits(){
+  const q = QRY.trim();
+  let h = "";
+  UNITS.filter(u => !SEM || u.sem === SEM).forEach(u => {
+    const ls = u.lessons.filter(l => !q || l.title.includes(q) || u.title.includes(q) || TYPE[l.type].n.includes(q));
+    if(!ls.length) return;
+    const up = Math.round(u.lessons.reduce((a,l) => a + (S.stats[l.id]?S.stats[l.id].best:0),0) / u.lessons.length);
+    h += `<div class="card unit">
+      <div class="uh"><div class="un">${u.n}</div>
+        <div class="ut"><small>${u.sem===1?"الفصل الأول":"الفصل الثاني"} • الوحدة ${u.n}</small><b>${u.title}</b>
+        <div class="mini"><i style="width:${up}%"></i></div></div></div>
+      ${ls.map(l => { const s = S.stats[l.id];
+        return `<div class="les" onclick="openLesson('${l.id}')">
+          <span class="tag ${TYPE[l.type].c}">${TYPE[l.type].n}</span><b>${l.title}</b>
+          <span class="score ${s?scoreCls(s.best):""}">${s ? s.best+"%" : "جديد"}</span></div>`; }).join("")}
+    </div>`;
+  });
+  $("unitList").innerHTML = h || `<div class="empty"><div class="e">🔎</div>لا توجد نتائج لـ«${q}»</div>`;
+}
+
+/* =================== الدرس =================== */
+let CUR = null;
+function openLesson(id, noPush){
+  CUR = lessonById(id); S.last = id; save();
+  const s = S.stats[id], t = TYPE[CUR.type];
+  $("lesson").innerHTML = `
+    <div class="card lhead ${s?"hb":""}">
+      <span class="tag ${t.c}">${t.e} ${t.n}</span>
+      <h2>${CUR.title}</h2>
+      <p>الوحدة ${CUR.unit.n}: ${CUR.unit.title} • ${CUR.questions.length} أسئلة</p>
+      ${s ? `<div class="best"><b>${s.best}%</b><small>أفضل نتيجة</small></div>` : ""}
+    </div>
+    <div class="reader-note">📖 <b>اقرأ الدرس أولًا</b> — شرح أصلي مستند إلى موضوعات كتاب الفصل الأول، مع أمثلة وخطوات للحل. <span>الأسئلة ليست منقولة حرفيًا من الكتاب.</span></div>
+    <div class="card sum">${CUR.summary}</div>
+    <div class="card" style="padding:15px"><label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" style="width:20px;height:20px" ${S.readLessons[id]?'checked':''} onchange="markRead('${id}',this.checked)"> قرأت شرح هذا الدرس وفهمت أمثلته</label></div>
+    <div class="sticky"><button class="cta" onclick="startLesson()">✍️ ابدأ الأسئلة (${CUR.questions.length})</button></div>`;
+  if(noPush) return;
+  push("lesson", "الدرس");
+}
+
+
+/* ============== مهارات اللغة الأربع: محتوى تدريبي أصلي ============== */
+let CURRENT_SKILL=null;
+function renderSkills(){
+  $("skills").innerHTML = `<div class="reader-note"><b>مهارات الفصل الأول</b><span>تدريبات أصلية مستوحاة من موضوعات وحدات الكتاب: نصوص قراءة تدريبية، كتابة، تحدث، واستماع اختياري بصوت الجهاز. ليست نصوص الكتاب الأصلية.</span></div>`+
+    SKILLS.map(k=>`<div class="card unit"><div class="uh"><div class="un">${k.unit}</div><div class="ut"><small>الوحدة ${k.unit}</small><b>${k.title}</b></div></div><div class="les" onclick="openSkill('${k.id}')"><b>📖 ${k.topic}</b><span class="score ${S.skillsDone[k.id]?'g':''}">${S.skillStats[k.id]?`أفضل نتيجة ${S.skillStats[k.id].best}%`:"ابدأ"}</span></div><p style="color:var(--muted);font-size:.83rem;padding:8px">قراءة وفهم • ${k.questions.length} أسئلة • مهمة كتابة • تحدث • استماع</p></div>`).join('')+
+    `<div class="card" style="padding:16px"><b>الكتاب المدرسي الرسمي</b><p style="font-size:.86rem;line-height:1.9">للاطلاع على النصوص الأدبية والقرآنية والأسئلة الأصلية، افتح نسخة المركز الوطني لتطوير المناهج. لم تُنسخ نصوص الكتاب كاملة داخل التطبيق.</p><a href="https://www.nccd.gov.jo/EBV4.0/Root_Storage/AR/2026-2027%20book/arabic/G11/1/11-2026.pdf" target="_blank" rel="noopener" style="color:var(--p1);font-weight:800">📄 افتح الكتاب الرسمي (PDF)</a></div>`;
+}
+function openSkill(id,noPush){
+  const k=SKILLS.find(x=>x.id===id); if(!k)return; CURRENT_SKILL=k;
+  const draft=S.drafts[id]||'';
+  $("skillDetail").innerHTML=`<div class="card lhead"><span class="tag tq">الوحدة ${k.unit} • المهارات</span><h2>${k.topic}</h2><p>${k.title}</p></div>
+    <div class="reader-note"><b>تنبيه المصدر:</b> هذا نص تدريبي من إنشاء التطبيق، وليس النص الأدبي أو القرآني الوارد في الكتاب المدرسي.</div>
+    <div class="card sum"><h3>أقرأ وأفهم</h3><p class="reading-passage">${k.passage}</p><button class="tool" onclick="speakSkill()">🔊 استمع إلى النص بصوت الجهاز (إن توفر)</button><p style="font-size:.8rem;color:var(--muted)">القراءة الصوتية آلية وقد تختلف جودتها حسب الجهاز والمتصفح.</p></div>
+    <button class="cta" onclick="startSkillQuiz()">📝 اختبر فهمك للنص (${k.questions.length} أسئلة)</button>
+    <div class="card sum"><h3>أكتب محتوى</h3><p>${k.writing}: ${k.task}</p><textarea id="writingDraft" rows="8" class="writing-area" placeholder="اكتب محاولتك هنا، ثم اضغط حفظ...">${escapeHTML(draft)}</textarea><button class="cta alt" onclick="saveDraft()">💾 احفظ كتابتي على هذا الجهاز</button><h3>معايير مراجعة الكتابة</h3><ul><li>وضوح الفكرة الرئيسة وترابط الفقرات.</li><li>سلامة النحو والإملاء وعلامات الترقيم.</li><li>الاستشهاد بمعلومات صحيحة وذكر المصادر عند الحاجة.</li><li>التزام نوع الكتابة المطلوب: ${k.writing}.</li></ul><p><b>تنبيه:</b> لا يُصحح التطبيق الكتابة الحرة آليًا؛ اعرضها على معلمك لتقييمها.</p></div>
+    <div class="card sum"><h3>أتحدث بطلاقة</h3><p>${k.speaking}</p><p>خطط لحديثك في ثلاث مراحل: مقدمة، أفكار مرتبة مع مثال، خاتمة. سجّل حديثك بتطبيق التسجيل في جهازك وراجعه، أو اعرضه على معلمك.</p><h3>أستمع بانتباه</h3><p>استمع إلى قراءة النص أعلاه إن كان جهازك يدعم القراءة العربية، ثم أجب عن أسئلة الفهم دون الرجوع إلى النص.</p><p><b>مهم:</b> هذا تدريب سمعي مساعد، ولا يحل محل المادة الصوتية الأصلية للكتاب.</p></div>`;
+  if(!noPush)push('skillDetail','مهارات الوحدة '+k.unit);
+}
+function escapeHTML(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function saveDraft(){if(!CURRENT_SKILL)return;S.drafts[CURRENT_SKILL.id]=$('writingDraft').value;save();toast('تم حفظ مسودة الكتابة محليًا على هذا الجهاز');}
+function speakSkill(){if(!CURRENT_SKILL||!('speechSynthesis' in window)){toast('القراءة الصوتية غير متاحة على هذا الجهاز');return;}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(CURRENT_SKILL.passage);u.lang='ar-JO';u.rate=.86;window.speechSynthesis.speak(u);}
+function startSkillQuiz(){const k=CURRENT_SKILL;if(!k)return;runQuiz(k.questions.map((q,i)=>({...q,key:k.id+'_'+i,lid:k.id,lesson:'فهم المقروء: '+k.topic})), 'skill','فهم المقروء: '+k.topic);}
+
+/* =================== إعداد الامتحان =================== */
+let EX = {scope:0, n:20, timer:true};
+function renderExamSetup(){
+  const pick = (k,v,label,sub) => `<button class="pick ${EX[k]===v?"on":""}" onclick="EX.${k}=${JSON.stringify(v)};renderExamSetup()">${label}${sub?`<small>${sub}</small>`:""}</button>`;
+  $("examSetup").innerHTML = `
+    <div class="card" style="padding:18px;text-align:center;margin-bottom:6px">
+      <div style="font-size:2.6rem">🎓</div>
+      <b style="font-size:1.1rem">امتحان تدريبي من إعداد التطبيق</b>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:4px">أسئلة مختلطة، والإجابات تظهر في النهاية مع الشرح.<br>أفضل نتيجة لك: <b style="color:var(--p1)">${S.examBest}%</b></p>
+    </div>
+    <div class="lbl">المادة</div>
+    <div class="opts2">${pick("scope",0,"الكل","قواعد وفهم مقروء")}${pick("scope",1,"القواعد","150 سؤالًا")}${pick("scope",2,"فهم المقروء","50 سؤالًا")}</div>
+    <div class="lbl">عدد الأسئلة</div>
+    <div class="opts2">${pick("n",10,"10","سريع")}${pick("n",20,"20","متوسط")}${pick("n",40,"40","شامل")}</div>
+    <div class="lbl">المؤقت</div>
+    <div class="opts2">${pick("timer",true,"⏱️ مفعّل","دقيقة لكل سؤال (يمكن إلغاء المؤقت)")}${pick("timer",false,"بدون وقت","براحتك")}</div>
+    <button class="cta gold" onclick="startExam()">🚀 ابدأ الامتحان</button>`;
+}
+
+/* =================== محرك الأسئلة =================== */
+const QZ = {};
+function runQuiz(qs, mode, title){
+  Object.assign(QZ, {qs, mode, i:0, right:0, xp:0, wrong:[], hints:3, active:true, done:false, answered:false});
+  QZ.exam = mode === "exam";
+  push("quiz", title);
+  if(QZ.exam && EX.timer){ QZ.time = qs.length*60; startTimer(); } else QZ.time = 0;
+  drawQ();
+}
+function markRead(id,yes){S.readLessons[id]=yes;save();toast(yes?'أحسنت! سجّلنا قراءة الدرس':'أُزيلت علامة قراءة الدرس');}
+function masteryStatus(id){const a=S.attempts[id];if(!a)return 'لم أتدرّب';if(a.wrong===0&&a.correct>=2)return 'متقن';if(a.correct>=2&&a.correct>=a.wrong*2)return 'جيد';return 'يحتاج مراجعة';}
+function renderMastery(){
+ const total=allQ(), practiced=total.filter(q=>S.attempts[q.key]), mastered=total.filter(q=>masteryStatus(q.key)==='متقن');
+ const needs=total.filter(q=>masteryStatus(q.key)==='يحتاج مراجعة');
+ const unread=LESSONS.filter(l=>!S.readLessons[l.id]);
+ $('mastery').innerHTML=`<div class="card" style="padding:20px"><h2>🎯 خطة إتقان المادة</h2><p style="line-height:1.9;color:var(--muted)">اقرأ الشرح، ثم حل أسئلة الدرس، ثم أعد الأسئلة التي أخطأت فيها. يعتبر السؤال متقنًا بعد إجابتين صحيحتين على الأقل دون خطأ مسجّل في آخر المحاولات.</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin:14px 0"><div><b style="font-size:1.3rem">${practiced.length}</b><small style="display:block">من ${total.length} مجرّب</small></div><div><b style="font-size:1.3rem">${mastered.length}</b><small style="display:block">متقن</small></div><div><b style="font-size:1.3rem">${needs.length}</b><small style="display:block">بحاجة لمراجعة</small></div></div><button class="cta" onclick="startAdaptive()">🧠 ابدأ مراجعة ذكية (حتى 15 سؤالًا)</button></div>
+ <div class="card" style="padding:17px"><h3>📚 خطة قراءة الشروح</h3>${LESSONS.map(l=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line,#ddd)"><span>${S.readLessons[l.id]?'✅':'📖'} ${l.title}</span><button style="padding:8px 12px;border-radius:10px" onclick="openLesson('${l.id}')">افتح</button></div>`).join('')}</div>
+ <div class="card" style="padding:17px"><h3>🔎 ابحث في الأسئلة</h3><input id="masterySearch" aria-label="ابحث في الأسئلة" placeholder="اكتب كلمة من السؤال أو عنوان الدرس" oninput="searchMastery(this.value)" style="width:100%;padding:12px;border-radius:12px;border:1px solid #aaa"><div id="masteryResults" style="margin-top:10px"></div></div>
+ <div class="card" style="padding:17px"><h3>📄 تقرير قابل للطباعة</h3><p>اطبع تقدمك ونتائجك لتحديد نقاط الضعف.</p><button class="cta" onclick="printMastery()">طباعة تقرير الإتقان</button></div>`;
+}
+function startAdaptive(){const pool=allQ();const weak=shuffle(pool.filter(q=>S.attempts[q.key]&&masteryStatus(q.key)!=='متقن'));const unseen=shuffle(pool.filter(q=>!S.attempts[q.key]));const other=shuffle(pool.filter(q=>masteryStatus(q.key)==='متقن'));runQuiz([...weak,...unseen,...other].slice(0,15),'adaptive','مراجعة الإتقان');}
+function searchMastery(value){const box=$('masteryResults');if(!box)return;const v=value.trim().toLocaleLowerCase('ar');if(v.length<2){box.innerHTML='<small>اكتب حرفين على الأقل للبحث.</small>';return;}const qs=allQ().filter(q=>(q.q+' '+q.lesson).toLocaleLowerCase('ar').includes(v)).slice(0,20);box.innerHTML=qs.length?qs.map(q=>`<div style="padding:10px 0;border-bottom:1px solid #ddd"><small>${escapeHTML(q.lesson)}</small><div>${escapeHTML(q.q)}</div><small>الحالة: ${masteryStatus(q.key)}</small></div>`).join(''):'<p>لا توجد نتائج.</p>';}
+function printMastery(){const w=window.open('','_blank');if(!w){toast('اسمح بفتح نافذة الطباعة');return;}const lines=LESSONS.map(l=>`<tr><td>${escapeHTML(l.title)}</td><td>${S.readLessons[l.id]?'نعم':'لا'}</td><td>${S.stats[l.id]?.best??'—'}${S.stats[l.id]?'%':''}</td></tr>`).join('');w.document.write(`<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>تقرير إتقان أبني لغتي</title><style>body{font-family:Tahoma,Arial;padding:30px}table{width:100%;border-collapse:collapse}td,th{border:1px solid #aaa;padding:10px}</style></head><body><h1>تقرير إتقان أبني لغتي</h1><p>الطالب: ${escapeHTML(S.name)} | التاريخ: ${new Date().toLocaleDateString('ar-JO')}</p><table><tr><th>الدرس</th><th>قرأت الشرح</th><th>أفضل نتيجة</th></tr>${lines}</table><p>هذا التقرير يعكس نشاط الطالب في التطبيق، وليس تقييمًا رسميًا.</p></body></html>`);w.document.close();w.focus();w.print();}
+function startLesson(){ runQuiz(CUR.questions.map((q,i)=>({...q,key:CUR.id+"_"+i,lid:CUR.id,lesson:CUR.title})), "lesson", CUR.title); }
+function startExam(){
+  const qs = shuffle(allQ().filter(q => EX.scope===0 || (EX.scope===1 ? !q.lid.startsWith("skill") : q.lid.startsWith("skill")))).slice(0, EX.n);
+  runQuiz(qs, "exam", "امتحان تجريبي");
+}
+function startDaily(){ runQuiz(shuffle(allQ()).slice(0,5), "daily", "تحدّي اليوم"); }
+function startMistakes(){
+  const qs = S.mistakes.map(qByKey).filter(Boolean);
+  if(!qs.length){ emptyScreen("🎉","لا توجد أخطاء محفوظة","كل سؤال تخطئ فيه سيظهر هنا لتعيد حله حتى تتقنه.","أخطائي"); return; }
+  runQuiz(shuffle(qs), "mistakes", "أخطائي");
+}
+function startFav(){
+  const qs = S.fav.map(qByKey).filter(Boolean);
+  if(!qs.length){ emptyScreen("⭐","المفضلة فارغة","اضغط على ⭐ أثناء حل أي سؤال لتحفظه هنا وتراجعه لاحقًا.","المفضلة"); return; }
+  runQuiz(shuffle(qs), "fav", "المفضلة");
+}
+function emptyScreen(e, t, s, title){
+  QZ.active = false;
+  $("result").innerHTML = `<div class="card empty"><div class="e">${e}</div><b style="color:var(--ink);font-size:1.1rem">${t}</b><br>${s}</div>
+    <button class="cta" onclick="tab('lessons')">📚 اذهب إلى الدروس</button>`;
+  push("result", title);
+}
+
+function drawQ(){
+  const q = QZ.qs[QZ.i]; QZ.answered = false;
+  QZ.opts = shuffle(q.o.map((t,k) => ({t, right:k===(q.answer ?? 0)})));
+  const fav = S.fav.includes(q.key);
+  $("quiz").innerHTML = `
+    <div class="qhead"><div class="cnt">السؤال ${QZ.i+1} <small>من ${QZ.qs.length}</small></div>
+      ${QZ.time ? `<span class="timer" id="timer"></span>` : ""}</div>
+    <div class="qbar"><i style="width:${QZ.i/QZ.qs.length*100}%"></i></div>
+    <div class="card qcard">
+      <div class="qfrom">📖 ${q.lesson}</div>
+      <div class="qtext">${q.q}</div>
+      <div id="opts">${QZ.opts.map((o,k) => `<button class="opt" id="o${k}" onclick="pickOpt(${k})"><span class="l">${LETTERS[k]}</span><span>${o.t}</span></button>`).join("")}</div>
+      <div class="tools">
+        ${QZ.exam ? "" : `<button class="tool" id="hintBtn" onclick="useHint()" ${QZ.hints?"":"disabled"}>💡 حذف إجابتين (${QZ.hints})</button>`}
+        <button class="tool ${fav?"on":""}" id="favBtn" onclick="toggleFav()">${fav?"⭐ محفوظ":"☆ احفظ السؤال"}</button>
+      </div>
+      <div class="why" id="why"></div>
+    </div>
+    <button class="cta" id="nextBtn" style="display:none" onclick="nextQ()"></button>`;
+  if(QZ.time) drawTimer();
+}
+function useHint(){
+  if(!QZ.hints || QZ.answered) return;
+  const wrong = shuffle(QZ.opts.map((o,k)=>({o,k})).filter(x=>!x.o.right)).slice(0,2);
+  wrong.forEach(x => $("o"+x.k).classList.add("gone"));
+  QZ.hints--; const b=$("hintBtn"); b.disabled = true; b.textContent = `💡 حذف إجابتين (${QZ.hints})`;
+}
+function toggleFav(){
+  const k = QZ.qs[QZ.i].key, b = $("favBtn");
+  if(S.fav.includes(k)){ S.fav = S.fav.filter(x=>x!==k); b.classList.remove("on"); b.textContent="☆ احفظ السؤال"; }
+  else { S.fav.push(k); b.classList.add("on"); b.textContent="⭐ محفوظ"; toast("⭐ أُضيف السؤال إلى المفضلة"); }
+  save();
+}
+function pickOpt(k){
+  if(QZ.answered) return; QZ.answered = true;
+  const q = QZ.qs[QZ.i], o = QZ.opts[k], right = o.right;
+  S.solved++;
+  const hist=S.attempts[q.key]||{correct:0,wrong:0};
+  if(right){hist.correct++;if(hist.wrong>0)hist.wrong--;}
+  else {hist.wrong++;hist.correct=0;}
+  S.attempts[q.key]=hist;
+  if(right){ QZ.right++; S.correct++; QZ.xp += 10; S.xp += 10; if(QZ.mode==="mistakes") S.mistakes = S.mistakes.filter(x=>x!==q.key); }
+  else { QZ.wrong.push(q); if(!S.mistakes.includes(q.key)) S.mistakes.push(q.key); }
+  save();
+  document.querySelectorAll(".opt").forEach(b => b.disabled = true);
+  if($("hintBtn")) $("hintBtn").disabled = true;
+  if(QZ.exam){
+    $("o"+k).classList.add("sel");
+  }else{
+    beep(right);
+    QZ.opts.forEach((x,j) => { if(x.right) $("o"+j).classList.add("ok"); });
+    if(!right) $("o"+k).classList.add("bad");
+    const w = $("why"); w.className = "why " + (right?"ok":"bad");
+    w.innerHTML = `<b>${right ? ["✅ أحسنت!","✅ إجابة صحيحة","✅ ممتاز!"][Math.floor(Math.random()*3)] : "❌ الإجابة الصحيحة: "+q.o[q.answer ?? 0]}</b>${q.why}`;
+  }
+  const n = $("nextBtn"); n.style.display = "flex";
+  n.textContent = QZ.i < QZ.qs.length-1 ? "السؤال التالي ←" : "🏁 عرض النتيجة";
+  if(QZ.exam){ const i0 = QZ.i; setTimeout(()=>{ if(QZ.active && QZ.i===i0 && QZ.answered) nextQ(); }, 450); }
+  else n.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+function nextQ(){ if(QZ.i < QZ.qs.length-1){ QZ.i++; drawQ(); window.scrollTo(0,0); } else finish(false); }
+
+/* =================== المؤقت =================== */
+let TID = null;
+function startTimer(){ stopTimer(); TID = setInterval(()=>{ QZ.time--; drawTimer(); if(QZ.time<=0){ stopTimer(); finish(true); } },1000); }
+function stopTimer(){ if(TID){ clearInterval(TID); TID=null; } }
+function drawTimer(){ const t=$("timer"); if(!t) return; const m=Math.floor(QZ.time/60), s=QZ.time%60;
+  t.textContent=`⏱ ${m}:${s<10?"0":""}${s}`; t.classList.toggle("low", QZ.time<=60); }
+
+/* =================== النتيجة =================== */
+function touchStreak(){
+  const t = today(); if(S.streak.last === t) return;
+  S.streak.count = S.streak.last === yesterday() ? S.streak.count + 1 : 1;
+  S.streak.last = t; S.streak.best = Math.max(S.streak.best, S.streak.count);
+}
+function finish(timeout){
+  stopTimer(); QZ.done = true; QZ.active = false;
+  const answeredN = QZ.i + (QZ.answered ? 1 : 0);
+  if(timeout) for(let j=answeredN;j<QZ.qs.length;j++) QZ.wrong.push(QZ.qs[j]);
+  const total = QZ.qs.length, pct = Math.round(QZ.right/total*100);
+  const lvBefore = Math.floor((S.xp - QZ.xp)/XP_PER_LEVEL);
+  let bonus = 0;
+  if(QZ.mode==="lesson"){
+    const old = S.stats[CUR.id];
+    if(!old && pct>=80) bonus = 30;
+    S.stats[CUR.id] = {best:Math.max(old?old.best:0,pct), tries:(old?old.tries:0)+1};
+  }
+  if(QZ.mode==="daily" && S.daily!==today()){ S.daily = today(); bonus += 20; }
+  if(QZ.mode==="exam") S.examBest = Math.max(S.examBest, pct);
+  if(QZ.mode==="skill" && CURRENT_SKILL){ const id=CURRENT_SKILL.id; S.skillsDone[id]=true; const old=S.skillStats[id]||{best:0,tries:0}; S.skillStats[id]={best:Math.max(old.best,pct),tries:old.tries+1}; }
+  S.xp += bonus; QZ.xp += bonus;
+  touchStreak();
+  const newAch = ACH.filter(a => !S.ach.includes(a.id) && a.t(S));
+  newAch.forEach(a => S.ach.push(a.id));
+  save();
+
+  const c = pct>=80?"var(--ok)":pct>=50?"var(--acc)":"var(--bad)";
+  const msg = pct===100?["علامة كاملة! 👑","أداء أستاذ، استمر هكذا"]:pct>=90?["ممتاز! 🌟","أنت جاهز للامتحان"]:pct>=75?["جيد جدًا 👏","راجع أخطاءك لتصل للكاملة"]:pct>=50?["جيد 👍","تحتاج مراجعة بسيطة للخلاصة"]:["لا بأس، حاول مجددًا 💪","اقرأ الخلاصة ثم أعد المحاولة"];
+  const again = QZ.mode==="skill" ? `<button class="cta" onclick="startSkillQuiz()">🔁 أعد أسئلة الفهم</button><button class="cta alt" onclick="openSkill(CURRENT_SKILL.id)">📖 راجع النص</button>` : QZ.mode==="lesson" ? `<button class="cta" onclick="startLesson()">🔁 أعد الأسئلة</button><button class="cta alt" onclick="goBack()">📖 راجع الخلاصة</button>`
+              : QZ.mode==="exam" ? `<button class="cta" onclick="startExam()">🔁 امتحان جديد</button>`
+              : QZ.mode==="mistakes" ? `<button class="cta" onclick="startMistakes()">🔁 تابع حل أخطائي</button>`
+              : QZ.mode==="fav" ? `<button class="cta" onclick="startFav()">🔁 أعد المفضلة</button>`
+              : `<button class="cta" onclick="tab('home')">🏠 الرئيسية</button>`;
+  const shareTxt = encodeURIComponent(`حصلت على ${pct}% في «${$("title").textContent}» على تطبيق أبني لغتي للتوجيهي 📚✨`);
+  $("result").innerHTML = `
+    <div class="card res">
+      <div class="bigring" style="--v:${pct};--c:${c}"><i><b>${pct}%</b><small>${QZ.right} من ${total}</small></i></div>
+      <h2>${timeout?"انتهى الوقت ⏰":msg[0]}</h2><p>${msg[1]}</p>
+      <div class="gain"><span>⭐ +${QZ.xp} نقطة</span><span>🔥 ${S.streak.count} يوم</span></div>
+      ${again}
+      <a class="cta alt" style="text-decoration:none" href="https://wa.me/?text=${shareTxt}" target="_blank">📤 شارك نتيجتك</a>
+    </div>
+    ${QZ.wrong.length ? `<div class="sect"><h2>📋 راجع أخطاءك (${QZ.wrong.length})</h2></div>
+      <div class="review">${QZ.wrong.map(q=>`<div class="card rv"><div class="q">${q.q}</div><div class="a">✔ ${q.o[q.answer ?? 0]}</div><div class="w">${q.why}</div></div>`).join("")}</div>` : ""}`;
+  show("result", "النتيجة");
+  if(pct>=90) confetti();
+  let d = 300;
+  if(Math.floor(S.xp/XP_PER_LEVEL) > lvBefore){ setTimeout(()=>toast(`🎉 ارتقيت إلى مستوى «${levelName()}»`), d); d += 2800; }
+  newAch.forEach(a => { setTimeout(()=>{ toast(`🏅 إنجاز جديد: ${a.e} ${a.n}`); beep(true); }, d); d += 2800; });
+}
+
+/* =================== التقدّم =================== */
+function renderStats(){
+  const acc = S.solved ? Math.round(S.correct/S.solved*100) : 0;
+  const done = LESSONS.filter(l => S.stats[l.id]);
+  const weak = done.slice().sort((a,b)=>S.stats[a.id].best-S.stats[b.id].best).filter(l=>S.stats[l.id].best<80).slice(0,3);
+  const byType = ["q","b","a"].map(t => { const ls = LESSONS.filter(l=>l.type===t);
+    return {t, v:Math.round(ls.reduce((a,l)=>a+(S.stats[l.id]?S.stats[l.id].best:0),0)/ls.length)}; });
+  $("stats").innerHTML = `
+    <div class="stats">
+      <div class="card st"><b>${progress()}%</b><span>الإنجاز الكلي</span></div>
+      <div class="card st"><b>${acc}%</b><span>دقة الإجابات</span></div>
+      <div class="card st"><b>${S.solved}</b><span>سؤالًا حللته</span></div>
+      <div class="card st"><b>${S.streak.best}</b><span>أطول سلسلة أيام</span></div>
+    </div>
+    <div class="sect"><h2>مستواك في كل قسم</h2></div>
+    <div class="card bars">${byType.map(x=>`<div class="br"><div class="t"><b>${TYPE[x.t].e} ${TYPE[x.t].n}</b><span>${x.v}%</span></div><div class="mini"><i style="width:${x.v}%"></i></div></div>`).join("")}</div>
+    <div class="sect"><h2>🎯 تحتاج إلى مراجعة</h2></div>
+    ${weak.length ? weak.map(l=>`<div class="card cont" style="margin-bottom:10px" onclick="openLesson('${l.id}')">
+        <div class="ic tag ${TYPE[l.type].c}" style="padding:0">${TYPE[l.type].e}</div>
+        <div class="tx"><small>أفضل نتيجة ${S.stats[l.id].best}%</small><b>${l.title}</b></div><span class="arrow">‹</span></div>`).join("")
+      : `<div class="card empty" style="padding:22px">${done.length?"👏 لا توجد دروس ضعيفة، كل نتائجك فوق 80%":"ابدأ بحل الدروس ليظهر هنا ما يحتاج إلى مراجعة"}</div>`}
+    <div class="sect"><h2>🏅 الإنجازات (${S.ach.length}/${ACH.length})</h2></div>
+    <div class="ach">${ACH.map(a=>`<div class="ac ${S.ach.includes(a.id)?"on":""}"><div class="e">${a.e}</div><small>${a.n}</small></div>`).join("")}</div>`;
+}
+
+/* =================== الإعدادات =================== */
+function renderSettings(){
+  $("settings").innerHTML = `
+    <div class="card set">
+      <div class="sr"><div class="ic">👤</div><div class="tx"><b>${S.name||"بدون اسم"}</b><small>اسمك في التطبيق</small></div>
+        <button class="tool" style="flex:0;padding:8px 14px" onclick="editName()">تعديل</button></div>
+      <div class="sr"><div class="ic">🌙</div><div class="tx"><b>الوضع الليلي</b><small>مريح للعين في الدراسة ليلًا</small></div>
+        <button class="sw ${S.set.dark?"on":""}" onclick="toggleDark();renderSettings()"></button></div>
+      <div class="sr"><div class="ic">🔊</div><div class="tx"><b>الصوت والاهتزاز</b><small>عند الإجابة</small></div>
+        <button class="sw ${S.set.sound?"on":""}" onclick="S.set.sound=!S.set.sound;save();renderSettings()"></button></div>
+      <div class="sr"><div class="ic">🔠</div><div class="tx"><b>حجم الخط</b><small>لراحة القراءة</small></div>
+        <div class="fs">${["ص","م","ك"].map((t,i)=>`<button class="${S.set.font===i?"on":""}" onclick="setFont(${i})">${t}</button>`).join("")}</div></div>
+      <div class="sr"><div class="ic">📦</div><div class="tx"><b>نسخة احتياطية من التقدم</b><small>احفظ نتائجك ومسوداتك في ملف JSON على جهازك</small></div><button class="tool" style="flex:0;padding:8px" onclick="exportProgress()">تصدير</button></div>
+      <div class="sr"><div class="ic">📥</div><div class="tx"><b>استعادة التقدم</b><small>استيراد ملف نسختك الاحتياطية</small></div><button class="tool" style="flex:0;padding:8px" onclick="document.getElementById('restoreFile').click()">استيراد</button><input type="file" id="restoreFile" accept="application/json,.json" style="display:none" onchange="importProgress(this)"></div>
+      <div class="sr" style="cursor:pointer" onclick="resetAll()"><div class="ic">🗑️</div><div class="tx"><b class="danger">مسح التقدّم</b><small>يحذف النتائج والنقاط والأخطاء</small></div></div>
+    </div>
+    <div class="card about">
+      <div class="lg">أبني لغتي</div>
+      <p>تدريبات مستقلة للصف الحادي عشر – الفصل الأول 2026–2027<br>مستندة إلى موضوعات الكتاب المدرسي، وليست تطبيقًا رسميًا تابعًا للمركز الوطني لتطوير المناهج.</p>
+      <p style="margin-top:12px">تطوير: <b style="color:var(--ink)">Dahshan Soft</b></p>
+      <a class="wa" href="https://wa.me/${WA}" target="_blank">💬 تواصل عبر واتساب</a>
+      <p style="margin-top:10px;font-size:.75rem">لاقتراحاتك أو للإبلاغ عن خطأ في سؤال. جميع البيانات محفوظة محليًا على جهازك؛ احفظ نسخة احتياطية قبل حذف بيانات المتصفح.</p>
+    </div>`;
+}
+function exportProgress(){
+  const payload={app:'abni-lughati',version:3,exported:new Date().toISOString(),data:S};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
+  const a=document.createElement('a');a.href=url;a.download='abni-lughati-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  toast('تم تجهيز ملف النسخة الاحتياطية');
+}
+async function importProgress(input){
+  const file=input.files&&input.files[0];if(!file)return;
+  if(file.size>2_000_000){toast('الملف كبير جدًا');input.value='';return;}
+  try{
+    const payload=JSON.parse(await file.text());
+    if(payload.app!=='abni-lughati'||!payload.data||typeof payload.data!=='object'||typeof payload.data.xp!=='number'||!Array.isArray(payload.data.mistakes)||!Array.isArray(payload.data.fav))throw Error('bad format');
+    confirmBox('استعادة النسخة الاحتياطية؟','ستحل بيانات النسخة المستوردة محل بيانات التقدم الحالية.','استعادة',()=>{
+      S=Object.assign({},JSON.parse(JSON.stringify(DEF)),payload.data);
+      S.set=Object.assign({},DEF.set,S.set||{});S.streak=Object.assign({},DEF.streak,S.streak||{});
+      S.drafts=S.drafts||{};S.skillsDone=S.skillsDone||{};S.skillStats=S.skillStats||{};
+      save();applySet();tab('home');toast('تمت استعادة البيانات');
+    });
+  }catch(e){toast('ملف النسخة الاحتياطية غير صالح');}
+  input.value='';
+}
+function editName(){
+  $("modalBox").innerHTML = `<h3>تعديل الاسم</h3><input id="nm2" value="${S.name}" maxlength="20" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);text-align:center;font-size:1rem;margin:10px 0 14px">
+    <div class="btns"><button style="background:var(--card2)" onclick="closeModal()">إلغاء</button>
+    <button style="background:var(--p1);color:#fff" onclick="S.name=$('nm2').value.trim();save();closeModal();renderSettings()">حفظ</button></div>`;
+  $("modal").classList.add("show");
+}
+function resetAll(){
+  confirmBox("مسح كل التقدّم؟","ستُحذف النتائج والنقاط والأخطاء والمفضلة. لا يمكن التراجع.","مسح",()=>{
+    const name=S.name, set=S.set; S = JSON.parse(JSON.stringify(DEF)); S.name=name; S.set=set; save(); toast("تم مسح التقدّم"); tab("home"); });
+}
+function toggleDark(){ S.set.dark = !S.set.dark; save(); applySet(); }
+function setFont(i){ S.set.font = i; save(); applySet(); renderSettings(); }
+function applySet(){
+  document.body.classList.toggle("dark", S.set.dark);
+  $("darkBtn").textContent = S.set.dark ? "☀️" : "🌙";
+  document.documentElement.style.fontSize = [14.5,16,17.5][S.set.font] + "px";
+  document.querySelector('meta[name=theme-color]').content = S.set.dark ? "#0d1222" : "#3b30c9";
+}
+
+/* =================== البداية =================== */
+const RENDER = {home:renderHome, lessons:renderLessons, skills:renderSkills, mastery:renderMastery, examSetup:renderExamSetup, stats:renderStats, settings:renderSettings};
+function saveName(){
+  S.name = $("nameIn").value.trim() || "يا بطل"; save();
+  $("welcome").style.display = "none"; $("app").style.display = "block"; tab("home");
+}
+applySet();
+if(!S.name){ $("welcome").style.display = "flex"; }
+else { $("app").style.display = "block"; tab("home"); }
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
