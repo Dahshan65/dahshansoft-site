@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dahshan Soft | حلول برمجية عربية – Software Solutions</title>
-<meta name="description" content="Dahshan Soft – حلول برمجية عربية سهلة وعملية: أملاكي لإدارة العقارات والإيجارات، وأبني لغتي لقواعد اللغة العربية لطلاب التوجيهي. Arabic software solutions from Jordan.">
+<meta name="description" content="Dahshan Soft – حلول برمجية عربية سهلة وعملية: أملاكي لإدارة العقارات والإيجارات، وأبني لغتي لقواعد اللغة العربية لطلاب التوجيهي، ومحطات إذاعية للإذاعات الأردنية والعربية. Arabic software solutions from Jordan.">
 <meta name="theme-color" content="#0f5c4d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23177a67'/%3E%3Cstop offset='1' stop-color='%23062f27'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23e8cf8f' stroke-width='2'%3E%3Crect x='17' y='17' width='30' height='30'/%3E%3Crect x='17' y='17' width='30' height='30' transform='rotate(45 32 32)'/%3E%3C/g%3E%3Ctext x='32' y='37.5' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' font-size='14' fill='%23e8cf8f'%3EDS%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Dahshan Soft – حلول برمجية عربية">
-<meta property="og:description" content="أملاكي لإدارة العقارات والإيجارات • أبني لغتي لقواعد اللغة العربية للتوجيهي">
+<meta property="og:description" content="أملاكي لإدارة العقارات والإيجارات • أبني لغتي لقواعد اللغة العربية للتوجيهي • محطات إذاعية">
 <meta property="og:image" content="https://dahshansoft.com/amlaki-screen.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,6 +148,38 @@ section{padding:90px 0}
 footer{background:#041f1a;color:#9fb8b0;text-align:center;padding:26px;font-size:.92rem}
 footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;direction:ltr;display:inline-block;letter-spacing:1px}
 
+/* ===== محطات إذاعية ===== */
+.app.radio:before{background:linear-gradient(90deg,var(--gold),#c98a2c,#5a3420)}
+.radio .shot:before{background:#f6e7c8}
+.radio .apphead h3{color:#5a3420}
+.radio .apphead .ricon{width:78px;height:78px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.12);display:block}
+.radio .pill{background:#f6e7c8;color:#7a4a1c}
+.radio .list li:before{background:#f6e7c8;color:#7a4a1c}
+.b-r{background:linear-gradient(135deg,#f4c566,#c98a2c);color:#2a1a12;box-shadow:0 8px 22px rgba(201,138,44,.35)}
+.b-or{background:transparent;color:#7a4a1c;border:1.5px solid #7a4a1c}
+.rscreen{width:100%;height:100%;border-radius:32px;overflow:hidden;background:#2a1a12;color:#f4e8cf;
+  font-family:'Noto Naskh Arabic',serif;padding:44px 14px 14px;display:flex;flex-direction:column;gap:12px;direction:rtl;text-align:center}
+.rscreen .rt{font-weight:700;font-size:1.15rem;line-height:1.3}
+.rscreen .rp{border-radius:12px 12px 5px 5px;background:radial-gradient(120% 130% at 50% 0,#ffdf97 0,#f4c566 45%,#c98a2c 100%);color:#24140b;
+  box-shadow:inset 0 0 0 2px #7d5526;overflow:hidden}
+.rscreen .rr{display:flex;align-items:center;gap:10px;padding:10px 12px 6px;direction:ltr}
+.rscreen .rf{font-family:'Inter',sans-serif;font-weight:700;font-size:1.9rem;line-height:1}
+.rscreen .rf small{display:block;font-size:.6rem;font-weight:600;margin-top:3px}
+.rscreen .rn{flex:1;text-align:right;direction:rtl;line-height:1.35}
+.rscreen .rn b{display:block;font-size:.95rem}
+.rscreen .rn span{font-size:.72rem;color:#4a2c13}
+.rscreen .rd{position:relative;height:42px;border-top:1px solid #8b602b77;
+  background-image:linear-gradient(90deg,#3e2410 2px,transparent 2px),linear-gradient(90deg,#3e241099 1px,transparent 1px);
+  background-size:40px 14px,8px 7px;background-position:0 100%,0 100%;background-repeat:repeat-x}
+.rscreen .rd:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#d3202f;box-shadow:0 0 7px #ff31408f}
+.rscreen .rk{display:flex;justify-content:center;align-items:center;gap:14px;direction:ltr}
+.rscreen .rk i{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#e1c088,#b8935a 55%,#70522a)}
+.rscreen .rk i.big{width:54px;height:54px;background:radial-gradient(circle at 36% 30%,#ff6a72,#d3202f 58%,#7d0f19)}
+.rscreen ul{list-style:none;text-align:right;font-size:.8rem}
+.rscreen li{display:flex;justify-content:space-between;padding:7px 4px;border-bottom:1px solid #4c312266}
+.rscreen li small{color:#c9b797;font-family:'Inter',sans-serif;font-size:.68rem;direction:ltr}
+.rscreen li.on{color:#f4c566}
+
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 
@@ -206,6 +238,7 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
     <a href="#apps" data-en="Our Apps">تطبيقاتنا</a>
     <a href="#amlaki" data-en="Amlaki">أملاكي</a>
     <a href="#abni" data-en="Abni Lughati">أبني لغتي</a>
+    <a href="#radio" data-en="Radio Stations">محطات إذاعية</a>
     <a href="#why" data-en="Why Us">لماذا نحن</a>
     <a href="#contact" data-en="Contact">تواصل معنا</a>
   </nav>
@@ -225,6 +258,7 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
       <div class="cta">
         <a class="btn b-gold" href="#amlaki" data-en="🏢 Amlaki">🏢 أملاكي</a>
         <a class="btn b-gold" href="#abni" data-en="📚 Abni Lughati">📚 أبني لغتي</a>
+        <a class="btn b-gold" href="#radio" data-en="📻 Radio Stations">📻 محطات إذاعية</a>
         <a class="btn b-o" href="#contact" data-en="Contact us">تواصل معنا</a>
       </div>
     </div>
@@ -288,6 +322,57 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
         <a class="btn b-oi" href="abni/app/" data-en="🌐 Open in browser">🌐 افتح بالمتصفح</a>
       </div>
       <p class="note" data-en="iPhone: open the link in Safari → Share ⬆️ → “Add to Home Screen”.">للآيفون: افتح الرابط في Safari ← زر المشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية».</p>
+    </div>
+  </div>
+
+  <!-- ===== محطات إذاعية ===== -->
+  <div class="app radio rv" id="radio">
+    <div class="shot"><div class="phone">
+      <div class="rscreen" aria-label="شاشة تطبيق محطات إذاعية">
+        <div class="rt">محطات إذاعية</div>
+        <div class="rp">
+          <div class="rr"><div class="rf">95.3<small>MHz</small></div><div class="rn"><b>مزاج إف إم</b><span>على الهواء</span></div></div>
+          <div class="rd"></div>
+        </div>
+        <div class="rk"><i></i><i class="big"></i><i></i></div>
+        <ul>
+          <li><span>روتانا طرب</span><small>FM 107.5</small></li>
+          <li class="on"><span>مزاج إف إم</span><small>FM 95.3</small></li>
+          <li><span>إذاعة القرآن الكريم</span><small>FM 93.1</small></li>
+          <li><span>راديو حياة</span><small>FM 104.7</small></li>
+          <li><span>الإذاعة الأردنية</span><small>FM 95.1</small></li>
+        </ul>
+      </div>
+    </div></div>
+    <div>
+      <div class="apphead">
+        <svg class="ricon" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><linearGradient id="rIc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c3122"/><stop offset="1" stop-color="#2a1a12"/></linearGradient></defs>
+          <rect width="100" height="100" rx="22" fill="url(#rIc)"/>
+          <rect x="16" y="30" width="68" height="50" rx="9" fill="#f4c566"/>
+          <line x1="38" y1="30" x2="68" y2="14" stroke="#f4c566" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="36" cy="55" r="12" fill="#3a2418"/><circle cx="36" cy="55" r="5" fill="#b8935a"/>
+          <rect x="54" y="44" width="22" height="4" rx="2" fill="#3a2418"/><rect x="54" y="53" width="22" height="4" rx="2" fill="#3a2418"/><rect x="54" y="62" width="22" height="4" rx="2" fill="#3a2418"/>
+          <line x1="65" y1="40" x2="65" y2="70" stroke="#d3202f" stroke-width="2.5"/>
+        </svg>
+        <div><h3 data-en="Radio Stations">محطات إذاعية</h3><small data-en="Jordanian &amp; Arabic radio online">الإذاعات الأردنية والعربية عبر الإنترنت</small></div>
+      </div>
+      <span class="pill" data-en="📻 Free – no subscription">📻 مجاني بالكامل</span>
+      <p class="desc" data-en="A classic FM radio look with a real tuning dial: listen to Jordanian and Arabic stations with one tap, wherever you are.">بشكل راديو FM الكلاسيكي ومؤشر تردد حقيقي: استمع إلى الإذاعات الأردنية والعربية بضغطة واحدة، أينما كنت.</p>
+      <ul class="list">
+        <li data-en="Jordanian stations with their Amman FM frequencies">الإذاعات الأردنية بتردداتها في عمّان</li>
+        <li data-en="Hundreds of Arabic stations from every country">مئات المحطات العربية من كل الدول</li>
+        <li data-en="Keeps playing with the screen locked">يستمر البث والشاشة مقفلة</li>
+        <li data-en="Favourites and quick station search">المفضلة والبحث السريع عن أي محطة</li>
+        <li data-en="Auto-reconnect if the stream drops">إعادة اتصال تلقائية إذا انقطع البث</li>
+        <li data-en="Controls from notifications and lock screen">تحكم من الإشعارات وشاشة القفل</li>
+      </ul>
+      <div class="btns">
+        <a class="btn b-r" href="https://github.com/Dahshan65/-DahshanRadio/releases/latest/download/mahattat-idhaiya.apk" target="_blank" rel="noopener" data-en="🤖 Android download">🤖 تحميل للأندرويد</a>
+        <a class="btn b-or" href="https://dahshan65.github.io/-DahshanRadio/" target="_blank" rel="noopener" data-en="🍎 iPhone">🍎 للآيفون</a>
+        <a class="btn b-or" href="https://dahshan65.github.io/-DahshanRadio/" target="_blank" rel="noopener" data-en="🌐 Open in browser">🌐 افتح بالمتصفح</a>
+      </div>
+      <p class="note" data-en="Needs an internet connection. iPhone: open the link in Safari → Share ⬆️ → “Add to Home Screen”.">يحتاج اتصالاً بالإنترنت. للآيفون: افتح الرابط في Safari ← زر المشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية».</p>
     </div>
   </div>
 </div></section>
