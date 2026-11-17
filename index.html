@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dahshan Soft | حلول برمجية عربية – Software Solutions</title>
-<meta name="description" content="Dahshan Soft – حلول برمجية عربية سهلة وعملية: أملاكي لإدارة العقارات والإيجارات، وأبني لغتي لقواعد اللغة العربية لطلاب التوجيهي، ومحطات إذاعية للإذاعات الأردنية والعربية، ومسابقة الأنبياء والرسل، وتطبيقا صحتي ومسابقة قواعد اللغة العربية على Google Play. Arabic software solutions from Jordan.">
+<meta name="description" content="Dahshan Soft – حلول برمجية عربية سهلة وعملية: أملاكي لإدارة العقارات والإيجارات، وأبني لغتي لقواعد اللغة العربية لطلاب التوجيهي، ومحطات إذاعية للإذاعات الأردنية والعربية، ومسابقة الأنبياء والرسل، وعلى أعتاب التوفل لتقييم مستوى اللغة الإنجليزية، وتطبيقا صحتي ومسابقة قواعد اللغة العربية على Google Play. Arabic software solutions from Jordan.">
 <meta name="theme-color" content="#0f5c4d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23177a67'/%3E%3Cstop offset='1' stop-color='%23062f27'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23e8cf8f' stroke-width='2'%3E%3Crect x='17' y='17' width='30' height='30'/%3E%3Crect x='17' y='17' width='30' height='30' transform='rotate(45 32 32)'/%3E%3C/g%3E%3Ctext x='32' y='37.5' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' font-size='14' fill='%23e8cf8f'%3EDS%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Dahshan Soft – حلول برمجية عربية">
@@ -76,6 +76,12 @@ html[lang=en] .hero h1{line-height:1.15}
 .hero p{font-size:1.15rem;opacity:.9;margin:20px 0 32px;max-width:540px}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
 .hero .b-o{color:#fff;border-color:rgba(255,255,255,.7)}
+/* أيقونات التطبيقات في الأعلى */
+.dock{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:18px 22px;padding:22px 18px;margin-top:-6px;background:rgba(255,255,255,.06);border:1px solid rgba(232,207,143,.28);border-radius:26px;backdrop-filter:blur(4px)}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:7px;width:80px;text-align:center;font-size:.8rem;font-weight:600;color:#fff;line-height:1.35}
+.dock .di{width:64px;height:64px;border-radius:17px;box-shadow:0 10px 22px rgba(0,0,0,.32),0 0 0 1px rgba(232,207,143,.35);display:block;object-fit:cover;background:#fff;transition:transform .25s,box-shadow .25s}
+.dock a:hover .di{transform:translateY(-5px) scale(1.06);box-shadow:0 14px 28px rgba(0,0,0,.4),0 0 0 2px var(--gold2)}
+.dock a:hover span{color:var(--gold2)}
 
 /* الختم */
 .seal{justify-self:center;position:relative;width:340px;height:340px;display:grid;place-items:center}
@@ -200,6 +206,33 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
 .pscreen .po.ok{background:#1fa855;border-color:#1fa855;font-weight:700}
 .pscreen .pf{margin-top:auto;font-size:.72rem;color:var(--gold2)}
 
+/* ===== على أعتاب التوفل ===== */
+.app.threshold:before{background:linear-gradient(90deg,#f3d98b,#d4a843,#14233c)}
+.threshold .shot:before{background:#e3e8f1}
+.threshold .apphead h3{color:#14233c}
+.threshold .apphead .ticon{width:78px;height:78px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.12);display:block}
+.threshold .pill{background:#e3e8f1;color:#14233c}
+.threshold .list li:before{background:#e3e8f1;color:#14233c}
+.b-t{background:linear-gradient(135deg,#1f3557,#14233c);color:#fff;box-shadow:0 8px 22px rgba(20,35,60,.3)}
+.b-ot{background:transparent;color:#14233c;border:1.5px solid #14233c}
+.tscreen{width:100%;height:100%;border-radius:32px;overflow:hidden;color:#fff;direction:rtl;text-align:center;
+  font-family:'Noto Naskh Arabic',serif;padding:44px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;
+  background:linear-gradient(160deg,#0b1628,#1f3557 60%,#2c4a75)}
+.tscreen .tt{font-family:'Amiri',serif;font-weight:700;font-size:1.2rem;color:#f3d98b;line-height:1.3}
+.tscreen .tr{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#d4a843 80%,rgba(255,255,255,.14) 0);margin:4px 0}
+.tscreen .tr div{width:96px;height:96px;border-radius:50%;background:#1a2d4b;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.tscreen .tr b{font-family:'Playfair Display',Georgia,serif;font-size:2rem}
+.tscreen .tr small{font-size:.62rem;opacity:.8;font-family:'Inter',sans-serif}
+.tscreen .tc{font-size:.72rem;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:2px 12px;background:rgba(255,255,255,.08)}
+.tscreen ul{list-style:none;width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:6px 10px;text-align:right}
+.tscreen li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.8rem}
+.tscreen li:last-child{border:0}
+.tscreen li span{flex:1}
+.tscreen li i{flex:0 0 70px;height:5px;border-radius:4px;background:rgba(255,255,255,.15);overflow:hidden;direction:ltr}
+.tscreen li i:after{content:"";display:block;height:100%;width:var(--w);background:#d4a843}
+.tscreen li b{color:#f3d98b;font-family:'Playfair Display',Georgia,serif;width:28px;text-align:left}
+.tscreen .tw{margin-top:auto;width:100%;background:#25d366;border-radius:12px;padding:8px;font-size:.78rem;font-weight:700}
+
 /* ===== على Google Play ===== */
 .play{background:#fff;border-top:1px solid var(--line)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
@@ -230,6 +263,9 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
   .seal .core{width:186px;height:186px}
   .seal .emblem{width:66px;height:66px}
   .seal .cal{font-size:1.5rem}
+  .dock{gap:14px 6px;padding:16px 8px}
+  .dock a{width:72px;font-size:.74rem}
+  .dock .di{width:58px;height:58px;border-radius:15px}
   .links{display:none}
   .app{padding:30px 22px;gap:30px}
   .phone{width:230px;height:478px}
@@ -267,6 +303,42 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
       <circle cx="50" cy="50" r="17.5" fill="#0b4a3e" stroke="url(#emGold)" stroke-width="1.2"/>
       <text x="50" y="56.5" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="17" fill="url(#emGold)" letter-spacing=".5">DS</text>
     </symbol>
+    <!-- أيقونات التطبيقات الصغيرة -->
+    <linearGradient id="dGr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c3122"/><stop offset="1" stop-color="#2a1a12"/></linearGradient>
+    <linearGradient id="dGp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a7c69"/><stop offset="1" stop-color="#062f27"/></linearGradient>
+    <linearGradient id="dGt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1a2e"/><stop offset="1" stop-color="#2c4a75"/></linearGradient>
+    <linearGradient id="dGn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#0b0b0b"/></linearGradient>
+    <symbol id="i-radio" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="url(#dGr)"/>
+      <rect x="16" y="30" width="68" height="50" rx="9" fill="#f4c566"/>
+      <line x1="38" y1="30" x2="68" y2="14" stroke="#f4c566" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="36" cy="55" r="12" fill="#3a2418"/><circle cx="36" cy="55" r="5" fill="#b8935a"/>
+      <rect x="54" y="44" width="22" height="4" rx="2" fill="#3a2418"/><rect x="54" y="53" width="22" height="4" rx="2" fill="#3a2418"/><rect x="54" y="62" width="22" height="4" rx="2" fill="#3a2418"/>
+      <line x1="65" y1="40" x2="65" y2="70" stroke="#d3202f" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="i-prophets" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="url(#dGp)"/>
+      <g fill="none" stroke="#e8cf8f" stroke-width="2" stroke-linejoin="round" opacity=".55"><rect x="20" y="20" width="60" height="60"/><rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/></g>
+      <circle cx="50" cy="50" r="24" fill="#0b4a3e" stroke="#e8cf8f" stroke-width="1.5"/>
+      <text x="50" y="58" text-anchor="middle" font-family="'Amiri',serif" font-weight="700" font-size="21" fill="#e8cf8f">رُسُل</text>
+    </symbol>
+    <symbol id="i-threshold" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="url(#dGt)"/>
+      <g fill="none" stroke="#e2bd62" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M28 70V38l22-14 22 14v32"/><path d="M20 72h60"/></g>
+      <rect x="43" y="50" width="14" height="20" fill="#e2bd62"/>
+      <text x="50" y="88" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#d4a843">THRESHOLD</text>
+    </symbol>
+    <symbol id="i-health" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="url(#dGp)"/>
+      <path d="M58 22a30 30 0 1 0 22 46A25 25 0 1 1 58 22z" fill="#e8cf8f"/>
+      <path d="M60 50h7l4-9 6 18 4-9h7" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-grammar" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="22" fill="url(#dGn)"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#d9b968" stroke-width="3"/>
+      <circle cx="50" cy="50" r="28" fill="none" stroke="#d9b968" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="50" y="62" text-anchor="middle" font-family="'Amiri',serif" font-weight="700" font-size="34" fill="#d9b968">نحو</text>
+    </symbol>
   </defs>
 </svg>
 
@@ -281,6 +353,7 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
     <a href="#abni" data-en="Abni Lughati">أبني لغتي</a>
     <a href="#radio" data-en="Radio Stations">محطات إذاعية</a>
     <a href="#prophets" data-en="Prophets Quiz">مسابقة الأنبياء</a>
+    <a href="#threshold" data-en="Threshold">على أعتاب التوفل</a>
     <a href="#play" data-en="Google Play">Google Play</a>
     <a href="#why" data-en="Why Us">لماذا نحن</a>
     <a href="#contact" data-en="Contact">تواصل معنا</a>
@@ -299,11 +372,7 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
       <h1 data-en="Simple <span>Arabic</span> apps<br>for your work and learning">حلول برمجية <span>سهلة</span><br>تخدم عملك وتعليمك</h1>
       <p data-en="We build simple, clear apps with large buttons and proper Arabic. They run on Android, iPhone and the web, even without internet.">نصمّم تطبيقات بسيطة وواضحة، بأزرار كبيرة ولغة عربية سليمة، تعمل على الأندرويد والآيفون والمتصفح، وحتى بدون إنترنت.</p>
       <div class="cta">
-        <a class="btn b-gold" href="#amlaki" data-en="🏢 Amlaki">🏢 أملاكي</a>
-        <a class="btn b-gold" href="#abni" data-en="📚 Abni Lughati">📚 أبني لغتي</a>
-        <a class="btn b-gold" href="#radio" data-en="📻 Radio Stations">📻 محطات إذاعية</a>
-        <a class="btn b-gold" href="#prophets" data-en="📜 Prophets Quiz">📜 مسابقة الأنبياء</a>
-        <a class="btn b-gold" href="#play" data-en="▶️ On Google Play">▶️ على Google Play</a>
+        <a class="btn b-gold" href="#apps" data-en="📱 All our apps">📱 كل تطبيقاتنا</a>
         <a class="btn b-o" href="#contact" data-en="Contact us">تواصل معنا</a>
       </div>
     </div>
@@ -315,6 +384,15 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
         <div class="lat">DAHSHAN SOFT</div>
       </div>
     </div>
+    <nav class="dock" aria-label="تطبيقاتنا">
+      <a href="#amlaki"><img class="di" src="amlak-icon.png" alt=""><span data-en="Amlaki">أملاكي</span></a>
+      <a href="#abni"><img class="di" src="abni/logo.png" alt=""><span data-en="Abni Lughati">أبني لغتي</span></a>
+      <a href="#radio"><svg class="di" aria-hidden="true"><use href="#i-radio"/></svg><span data-en="Radio">محطات إذاعية</span></a>
+      <a href="#prophets"><svg class="di" aria-hidden="true"><use href="#i-prophets"/></svg><span data-en="Prophets Quiz">مسابقة الأنبياء</span></a>
+      <a href="#threshold"><svg class="di" aria-hidden="true"><use href="#i-threshold"/></svg><span data-en="Threshold">على أعتاب التوفل</span></a>
+      <a href="#health"><svg class="di" aria-hidden="true"><use href="#i-health"/></svg><span data-en="My Health">صحتي</span></a>
+      <a href="#grammar"><svg class="di" aria-hidden="true"><use href="#i-grammar"/></svg><span data-en="Grammar Quiz">قواعد اللغة</span></a>
+    </nav>
   </div>
   <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,40 C360,90 1080,-10 1440,40 L1440,70 L0,70 Z" fill="#faf8f3"/></svg>
 </section>
@@ -465,6 +543,53 @@ footer b{color:var(--gold2);font-family:'Playfair Display',Georgia,serif;directi
         <a class="btn b-op" href="https://prophets.dahshansoft.com" target="_blank" rel="noopener" data-en="🌐 Open in browser">🌐 افتح بالمتصفح</a>
       </div>
       <p class="note" data-en="iPhone: open the link in Safari → Share ⬆️ → “Add to Home Screen”.">للآيفون: افتح الرابط في Safari ← زر المشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية».</p>
+    </div>
+  </div>
+
+  <!-- ===== على أعتاب التوفل ===== -->
+  <div class="app threshold rv" id="threshold">
+    <div class="shot"><div class="phone">
+      <div class="tscreen" aria-label="شاشة نتيجة تطبيق على أعتاب التوفل">
+        <div class="tt">نتيجة الاختبار الكامل</div>
+        <div class="tr"><div><small>Overall</small><b>5.0</b><small>من 6</small></div></div>
+        <div class="tc">مستوى CEFR: C1 (متقدم)</div>
+        <ul>
+          <li><span>📖 القراءة</span><i style="--w:80%"></i><b>5.0</b></li>
+          <li><span>🎧 الاستماع</span><i style="--w:80%"></i><b>5.0</b></li>
+          <li><span>✍️ الكتابة</span><i style="--w:90%"></i><b>5.5</b></li>
+          <li><span>🎙️ المحادثة</span><i style="--w:70%"></i><b>4.5</b></li>
+        </ul>
+        <div class="tw">💬 إرسال النتيجة عبر واتساب</div>
+      </div>
+    </div></div>
+    <div>
+      <div class="apphead">
+        <svg class="ticon" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><linearGradient id="tIc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1a2e"/><stop offset="1" stop-color="#2c4a75"/></linearGradient>
+          <linearGradient id="tGd" gradientUnits="userSpaceOnUse" x1="20" y1="14" x2="80" y2="74"><stop offset="0" stop-color="#d4a843"/><stop offset="1" stop-color="#f3d98b"/></linearGradient></defs>
+          <rect width="100" height="100" rx="22" fill="url(#tIc)"/>
+          <g fill="none" stroke="url(#tGd)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M28 70V38l22-14 22 14v32"/><path d="M20 72h60"/></g>
+          <rect x="43" y="50" width="14" height="20" fill="url(#tGd)"/>
+          <text x="50" y="88" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#d4a843">THRESHOLD</text>
+        </svg>
+        <div><h3 data-en="Threshold">على أعتاب التوفل</h3><small data-en="English level test – before the real exam">اختبار مستوى اللغة الإنجليزية قبل الامتحان الحقيقي</small></div>
+      </div>
+      <span class="pill" data-en="🎓 3 full practice tests – 4 sections">🎓 3 نماذج اختبار كاملة – 4 أقسام</span>
+      <p class="desc" data-en="A full practice test that helps you assess your English level and get ready for international language exams with confidence: reading, listening, writing and speaking, with an instant score.">اختبار تجريبي كامل يساعدك على تقييم مستواك في اللغة الإنجليزية والاستعداد لاختبارات اللغة الدولية بثقة: قراءة واستماع وكتابة ومحادثة، مع نتيجة فورية.</p>
+      <ul class="list">
+        <li data-en="Reading, listening, writing and speaking">قراءة واستماع وكتابة ومحادثة</li>
+        <li data-en="Same tasks and timer as the new exam format">نفس المهام والمؤقت بنظام الاختبار الجديد</li>
+        <li data-en="Score out of 6 for each section and CEFR level">درجة من 6 لكل قسم ومستوى CEFR</li>
+        <li data-en="Arabic explanation for every answer">شرح بالعربية لكل إجابة</li>
+        <li data-en="Result sent to the student on WhatsApp">النتيجة تصل للطالب على الواتساب</li>
+        <li data-en="Speaking recorded with the microphone">تسجيل المحادثة بالميكروفون</li>
+      </ul>
+      <div class="btns">
+        <a class="btn b-t" href="https://threshold.dahshansoft.com/Threshold.apk" download data-en="🤖 Android download">🤖 تحميل للأندرويد</a>
+        <a class="btn b-ot" href="https://threshold.dahshansoft.com" target="_blank" rel="noopener" data-en="🍎 iPhone">🍎 للآيفون</a>
+        <a class="btn b-ot" href="https://threshold.dahshansoft.com" target="_blank" rel="noopener" data-en="🌐 Open in browser">🌐 افتح بالمتصفح</a>
+      </div>
+      <p class="note" data-en="Use headphones for the listening section. iPhone: open the link in Safari → Share ⬆️ → “Add to Home Screen”.">يُفضّل استخدام سماعات الأذن لقسم الاستماع. للآيفون: افتح الرابط في Safari ← زر المشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية».</p>
     </div>
   </div>
 </div></section>
