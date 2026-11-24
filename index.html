@@ -569,7 +569,8 @@ html[lang=en] .feat .go{direction:ltr}
 
 <div id="vm" class="vm" hidden><div class="vbox"><button class="vx" aria-label="إغلاق">✕</button><div class="vfr"><iframe id="vif" title="فيديو الشرح" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div></div>
 
-<footer>© <span id="y"></span> <b>DAHSHAN SOFT</b> — <span data-en="Amman, Jordan">عمّان، الأردن</span></footer>
+<footer>© <span id="y"></span> <b>DAHSHAN SOFT</b> — <span data-en="Amman, Jordan">عمّان، الأردن</span>
+<div id="vstat" style="display:none;margin-top:8px;font-size:.92rem;opacity:.9">👥 <span id="vcount">0</span> <span data-en="visitors">زائر</span></div></footer>
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
@@ -640,6 +641,15 @@ document.querySelectorAll('.vthumb').forEach(a => a.addEventListener('click', ev
 VM.addEventListener('click', ev => { if (ev.target === VM || ev.target.classList.contains('vx')) closeV(); });
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !VM.hidden) closeV(); });
 
+</script>
+<script>
+/* عدّاد الزوار — كل جهاز يُحسب مرة واحدة */
+(async()=>{try{
+  let isNew=false;try{if(!localStorage.getItem('ds_seen')){isNew=true;localStorage.setItem('ds_seen','1')}}catch(e){}
+  const r=await fetch('https://zakerli-api.waeldahshan.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'visit',site:'home',isNew})});
+  const d=await r.json();const n=+d.visits||0;
+  if(n){document.getElementById('vcount').textContent=n.toLocaleString('en-US');document.getElementById('vstat').style.display=''}
+}catch(e){}})();
 </script>
 </body>
 </html>
